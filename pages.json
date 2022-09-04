@@ -1,0 +1,89 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		 {
+			"path": "pages/userAuth/login/login",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		},{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/userAuth/registerUser/registerUser",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/Account/Account",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/teamReports/teamReports",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom"
+			}
+
+		}
+	    ,{
+            "path" : "pages/orderRecord/orderRecord",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "Lazada",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F7F7F7"
+	},
+	"tabBar": {
+			"color": "#fff",
+			"selectedColor": "#fff",
+			"borderStyle": "none",
+			"backgroundColor": "#4f62c0",
+			"list": [
+				{
+					"pagePath": "pages/index/index",
+					"iconPath": "static/image/tabbar/home_n.png",
+					"selectedIconPath": "static/image/tabbar/home_y.png",
+					"text": "Home"
+				},{
+					"pagePath": "pages/orderRecord/orderRecord",
+					"iconPath": "static/image/tabbar/orderRecord_n.png",
+					"selectedIconPath": "static/image/tabbar/orderRecord_y.png",
+					"text": "Order Record"
+				}, {
+					"pagePath": "pages/teamReports/teamReports",
+					"iconPath": "static/image/tabbar/team_n.png",
+					"selectedIconPath": "static/image/tabbar/team_y.png",
+					"text": "Team Report"
+				},
+				{
+					"pagePath": "pages/Account/Account",
+					"iconPath": "static/image/tabbar/my_n.png",
+					"selectedIconPath": "static/image/tabbar/my_y.png",
+					"text": "Account"
+				}
+			]
+		}
+}
