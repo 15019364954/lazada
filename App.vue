@@ -11,12 +11,12 @@
 	@font-face {
 		font-family: PingFangSC-Medium;
 		src:url('@/static/font/PingFang-Medium_0.ttf');
+		font-weight: 500;
 	}
 	@font-face {
 		font-family: PingFangSC-Regular;
 		src:url('@/static/font/PingFang-Regular_0.ttf');
-		font-weight: normal;
-		font-style: normal;
+		font-weight: 400;
 	}
 	@font-face {
 		font-family: PingFang-Heavy;

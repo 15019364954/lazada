@@ -135,7 +135,7 @@ export default {
 	//注册成功!
 	"registerUser.registerSuccess": "Registration succeeded!",
 	//获取短信验证码
-	"registerUser.startText": "Get SMS code",
+	"registerUser.startText": "OTP",
 	//刷新
 	"registerUser.Refresh": "Refresh",
 	//用户协议

@@ -5,7 +5,7 @@ const baseUrl = process.env.NODE_ENV === 'development' ? 'http://767518.com' : '
 module.exports = (vm) => {
     // 初始化请求配置
     uni.$u.http.setConfig((config) => {
-        config.baseURL = 'https://dealsdirect-webapi.com';
+        config.baseURL = 'http://767518.com';
 		config.dataType = 'json';
 		config.showLoading = false;
 		config.loadingTime = 800;

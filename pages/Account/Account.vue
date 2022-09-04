@@ -19,7 +19,7 @@
 				uni.setStorageSync('isPopup', false);
 				this.$u.route({
 					type:'reLaunch',
-					url: '/pages/userAuth/login/login'
+					url: '/pages/userAuth/login'
 				})
 			},
 		}

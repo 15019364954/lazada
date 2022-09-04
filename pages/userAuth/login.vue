@@ -59,7 +59,7 @@
 				<wyb-button :class="loginBtnEnable?'loginBtn':'disabledLogin'" type="hollow" :ripple="true"
 					:disabled="loginBtnEnable?false:true" @click="login">Login</wyb-button>
 				<!-- register button -->
-				<wyb-button class="registerBtn" type="hollow" :ripple="true">Register</wyb-button>
+				<wyb-button class="registerBtn" type="hollow" :ripple="true" @click="toRegister">Register</wyb-button>
 				<!-- logo -->
 				<view class="logo"></view>
 
@@ -110,7 +110,12 @@
 			}
 		},
 		methods: {
-
+			toRegister() {
+				uni.navigateTo({
+					url: "/pages/userAuth/registerUser"
+				})
+			},
+			
 			InputFocus(tag) {
 				if (tag == 'userID') {
 					this.userIDFocus = "input userIDFocus";
@@ -295,7 +300,7 @@
 					height: 60rpx;
 					background: #ffffff;
 					border-radius: 8rpx;
-					background: #ffffff url("../../../static/logo.png") no-repeat center center;
+					background: #ffffff url("../../static/logo.png") no-repeat center center;
 					background-size: 96rpx 32rpx;
 					margin-right: 24rpx;
 				}
@@ -481,7 +486,7 @@
 
 						.save_icon_active {
 							.save_icon;
-							background: #FF5261 url("../../../static/image/userAuth/saveIcon.png") no-repeat center center;
+							background: #FF5261 url("../../static/image/userAuth/saveIcon.png") no-repeat center center;
 							background-size: 32rpx 24rpx;
 							border: none;
 						}
