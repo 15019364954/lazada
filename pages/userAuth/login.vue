@@ -53,7 +53,7 @@
 						<view :class="savePwdClass" @click="savePwdToggleClass"></view>
 						<view class="text" @click="savePwdToggleClass">Save password</view>
 					</view>
-					<view class="forget">Forget password</view>
+					<view class="forget" @click="toForget">Forget password</view>
 				</view>
 				<!-- Login button -->
 				<wyb-button :class="loginBtnEnable?'loginBtn':'disabledLogin'" type="hollow" :ripple="true"
@@ -113,6 +113,12 @@
 			toRegister() {
 				uni.navigateTo({
 					url: "/pages/userAuth/registerUser"
+				})
+			},
+			
+			toForget() {
+				uni.navigateTo({
+					url: "/pages/userAuth/resetPassword"
 				})
 			},
 			

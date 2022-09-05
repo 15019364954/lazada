@@ -1,7 +1,6 @@
 export default {
-	//英语文件
 	/* ------------------------------------------启动页第一页-------------------------------------- */
-	"guide-befor.mainTitle": "Deals Direct",
+	"guide-befor.mainTitle": "Zalando",
 	//数据驱动平台
 	"guide-befor.title": "Data Driven Platform",
 	//对于我们的合作伙伴零售商来说，每一个驱动数据和销售数据都是宝贵的资产
@@ -32,10 +31,10 @@ export default {
 	/* ------------------------------------------登录页-------------------------------------- */
 	//您好,用户
 	"login.welcome": "Hello,User", 
-	//请输入您的用户ID或邮箱和密码登录。
-	"login.tips": "Please enter your user ID or email and password to log in.",
-	//用户ID或邮箱
-	"login.accountPlhoTypes": "User ID or Email", 
+	//请输入您的用户名和密码登录。
+	"login.tips": "Please enter your User ID and Password to log in",
+	//用户ID
+	"login.accountPlhoTypes": "USER ID", 
 	//输入您的密码
 	"login.pwdHols": "ENTER YOUR PASSWORD",
 	//忘记密码?
@@ -46,24 +45,20 @@ export default {
 	"login.loginBtnText": "Log in", 
 	//新注册
 	"login.regAccountBtnText": "New Registration",
-	//此应用程序仅适用于 Deals Direct 的授权用户
-	"login.bottomTips": "This application is only for Deals Direct authorized user", 
+	//此应用程序仅适用于 Zalando 的授权用户
+	"login.bottomTips": "This application is only for Zalando's authorized user", 
 	//正在登录...
 	"login.logining": "logging in...",
 	//登陆成功！
 	"login.loginSuccess": "Login successful!",
-	//用户名或邮箱不能为空
-	"login.accountIsEmpty": "Username or Email cannot be empty", 
+	//用户名不能为空
+	"login.accountIsEmpty": "Username cannot be empty!", 
 	//用户ID长度在 3 到 20 个字符之间！
 	"login.userIDRange": "User ID length is between 3 and 20 characters",
 	//密码不能为空!
 	"login.pwdIsEmpty": "Password cannot be empty!",
 	//密码长度在 6 到 12 个字符之间！
 	"login.pwdRange": "Password length is between 6 and 12 characters!",
-	//邮箱注册
-	"login.emailRegBtnText": "Email Registration",
-	//邮箱长度在 12 到 40 个字符之间！
-	"login.emailReg": "Mailboxes are between 12 and 40 characters long!",
 
 	/* ------------------------------------------注册界面-------------------------------------- */
 	//注册新账户
@@ -86,8 +81,8 @@ export default {
 	"registerUser.mobile":"Enter Mobile Number", 
 	//验证码
 	"registerUser.mobileCode":"Verification Code ", 
-	//我同意Deals Direct的
-	"registerUser.agree": "I agree with Deals Direct", 
+	//我同意Zalando的
+	"registerUser.agree": "I agree with Zalando's", 
 	//用户协议
 	"registerUser.Agreements": "User Agreements", 
 	//立即注册
@@ -137,11 +132,7 @@ export default {
 	//获取短信验证码
 	"registerUser.startText": "OTP",
 	//刷新
-	"registerUser.Refresh": "Refresh",
-	//用户协议
-	"registerUser.userAgreement":"User Agreement",
-	//关闭
-	"registerUser.close":"Close",
+	"registerUser.Refresh": "OTP",
 	
 	/* ------------------------------------------忘记密码-------------------------------------- */
 	//重设密码
@@ -190,27 +181,17 @@ export default {
 	"forGetPwd.loading": "Modifying...", 
 	//重置成功!
 	"forGetPwd.resetsuccess": "Reset succeeded!",
-	//通过邮箱重置密码？
-	"forGetPwd.resetByEmail": "Reset password by email?",
 	
 	/* ------------------------------------------首页-------------------------------------- */
 	//介绍
 	"home.Intro": "Intro",
-	//敬请期待
-	"home.TeamMechanism": "Comming soon",
+	//团队机制
+	"home.TeamMechanism": "Team Mechanism",
 	//佣金费率
 	"home.commisionRate" : "Commission Rate", 
-	//会员新闻
-	"home.memberNew": "Member News",
-	//佣金
-	"home.NewGetcommissions": "{123} Commission ${100}",
 	
 	//教程
 	"home.Tutorial": "Tutorial", 
-	
-	/* ------------------------------------------轮播图详情-------------------------------------- */
-	//促销活动
-	"promotions.title": "Promotions",
 	
 	/* ------------------------------------------任务大厅组件-------------------------------------- */
 	 //职位等级
@@ -225,35 +206,6 @@ export default {
 	"task-hall.stayTuned": "Stay Tuned", 
 	//暂未开启
 	"task-hall.notOpenYet": "Coming Soon", 
-	
-	/* ---------------------------------新增--------------------------------- */
-	//任务大厅
-	"task-hall.missionHall": "Mission Hall",
-	//佣金比例
-	"task-hall.rates": "Commission rate",
-	//订单数量
-	"task-hall.orders": "Quantity of order",
-	//订单金额
-	"task-hall.ordersAmount": "Order amount",
-	//进入
-	"task-hall.opening": "Enter",
-	//未开启
-	"task-hall.notopen": "Not open",
-	//暂未开启
-	"task-hall.NotOpenYet": "Not open yet",
-	//敬请期待
-	"task-hall.comingSoon": "Comming soon",
-	//提示
-	"task-hall.tip": "Tips",
-	//确认
-	"task-hall.confirm": "Confirm",
-	"task-hall.Taskconditions": "You need to invite {0} friends, and each friend needs to deposit {1} USD or more.",
-	"task-hall.Welfarehousing": "The account balance is required to be at least ${0}.",
-	
-	/* -----------------------------------福利大厅---------------------------- */
-	"Welfare-Hall.missionHall": "Welfare Hall",
-	
-	
 	
 	/* ------------------------------------------八个等级-------------------------------------- */
 	//见习经理
@@ -311,14 +263,14 @@ export default {
 	"dailyTasks.info1": "Each position can receive {0} tasks per day.",
 	//驱动数据佣金为（{0}% * 商品价格）
 	"dailyTasks.info2": "Commission of drive data is ({0}% * item price)",
-	//所有商品价格均以销售数据为准，可能与Deals Direct官网不同。
-	"dailyTasks.info3": "All commodity prices are based on sales data and may be different from Deals Direct official website.",
+	//所有商品价格均以销售数据为准，可能与ZALANDO官网不同。
+	"dailyTasks.info3": "All commodity prices are based on sales data and may be different from ZALANDO's official website.",
 	
 	/* ------------------------------------------提交订单界面-------------------------------------- */
 	//您的商品（1 件）
 	"store.goodsNum": "Your goods (1 items)",
-	//由 Deals Direct 发货
-	"store.DealsDirect": "Shipped by Deals Direct",
+	//由 ZALANDO 发货
+	"store.Zalando": "Shipped by ZALANDO",
 	//总额
 	"store.TotalTitleText": "Total",
 	//订单总额
@@ -471,8 +423,8 @@ export default {
 	"account.OfficialAnnouncement": "Official Announcement",
 	//佣金费率
 	"account.commisionRate" : "Commission Rate", 
-	//代理合作
-	"account.TeamMechanism": "Agency cooperation",
+	//团队机制
+	"account.TeamMechanism": "Team Mechanism",
 	//用户协议
 	"account.UserAgreement": "User Agreement",
 	//常见问题
@@ -518,23 +470,27 @@ export default {
 	"withdraw.noBingdTips2": "Suggestions: ",
 	//1.火币（需要谷歌验证器）
 	"withdraw.noBingdTips3": "1. Huobi (require Google Authenticator) ",
-	//2. Binance
-	"withdraw.noBingdTips4": "2. Binance",
+	//2. Binance（需要PAN卡）
+	"withdraw.noBingdTips4": "2. Binance (require PAN Card)",
 	//b) 钱包地址必须是 TRC-20 钱包地址，以字母“T”开头。
 	"withdraw.noBingdTips5": 'b) Wallet Address must be TRC-20 Wallet Address which begins with letter "T". ',
 	//c) 您的 TRC-20 钱包地址可按以下顺序在您的火币/币安中找到。
 	"withdraw.noBingdTips6": "c) Your TRC-20 Wallet Address can be found in your Huobi/Binance in following sequence.",
 	//打开你的火币/币安>>资产/钱包>>存款>>加密USDT>>Tron 20网络
 	"withdraw.noBingdTips7": "Open your Huobi/Binance >> Asset/Wallet >> Deposit >> Crypto USDT >> Tron 20 Network",
-	//d)1000以下随时提款，1000以上审核后5个工作日内到账
-	"withdraw.noBingdTips8": "d) Withdrawal at any time below $1000, credit to account within 5 working days after review above $1000",
 	
-	//1.提款时间周一到周五。10：00-22:00 法国时间
-	"withdraw.a": "1. Withdrawal time is Monday to Friday. 10:00-22:00 French time",
-	//2.最低提款10美金。1000美金以下当日到账。1000美金以上5个工作日到账。
-	"withdraw.b": "2. The minimum withdrawal amount is 10 USD. Same-day arrivals under $1,000. 5 working days for orders over $1000.",
-	//取款提示
-	"withdraw.note":"Withdrawal Tips",
+	//a) 最低提款金额为 10 美元。
+	"withdraw.a": "a) Minimum withdrawal amount is $10.",
+	//b) 所有提款将收取 5% 的手续费。
+	"withdraw.b": "b) All withdrawals will be subjected to 5% handling fee.",
+	//c) 提款提交：周一至周五 10:00-22:00 (IST)，公众假期除外。
+	"withdraw.c": "c) Withdrawal submission : Monday to Friday 10:00-22:00 (IST), except public holidays.",
+	//注释
+	"withdraw.note": "Note",
+	//1.所有提款将在批准后的1个工作日内记入您的TRC20钱包。
+	"withdraw.d": "1. All withdrawals will be credited to your TRC20 wallet within 1 working day after approval.",
+	//2.周五提交的提款将在周六（23:59之前）存入您的TRC20钱包。
+	"withdraw.d1": "2. Withdrawals submitted on Friday will be credited to your TRC20 wallet on Saturday (before 23:59).",
 	
 	//确认
 	"withdraw.ConfirmBtnText": "Confirm",
@@ -594,7 +550,7 @@ export default {
 	// b) 存款金额必须与存款金额完全相同。如果有，请包括小数位。例如：50.20 美元。
 	"recharge.b": "b) Deposit amount MUST BE exactly the same with the amount deposited. Do include decimal place if there is any. Eg: $50.20.",
 	//c) 正确复制交易 ID (TXID) 并粘贴到 TXID 框中。
-	"recharge.c": "c) Copy the Transaction ID (TXID) correctly and pasted in the (TXID) box.",
+	"recharge.c": "c) Copy the Transaction ID (TXID) correctly and pasted in the TXID box.",
 	
 	/* ------------------------------------------入款记录-------------------------------------- */
 	//入款记录
@@ -688,6 +644,8 @@ export default {
 	"Transfer.withdrawalPasswordNull": "Please enter the withdrawal password",
 	//转账成功
 	"Transfer.SuccessfulTransfer": "Successful transfer",
+	//不允许向自己转账
+	"Transfer.notAllowed": "Fund transfers into your own account are not allowed",
 	
 	//a) 最低转账金额为 50 美元。
 	"Transfer.a": "a) Minimum transfer amount is $50.",
@@ -720,9 +678,7 @@ export default {
 	//系统账号(用户ID)
 	"personalInformation.Systemaccount": "System Account (User ID)", 
 	//昵称
-	"personalInformation.Nickname": "Nickname",
-	//邮箱地址
-	"personalInformation.emialAddress": "Email address",
+	"personalInformation.Nickname": "Nickname", 
 	
 	
 	/* ------------------------------------------绑定的手机号码-------------------------------------- */
@@ -903,8 +859,6 @@ export default {
 	 "changePassword.loading": "Modifying...", 
 	 //重置成功!
 	 "changePassword.resetsuccess": "Reset succeeded!",
-	 //通过邮箱重置密码？
-	 "changePassword.resetByEmail": "Reset password by email?",
 	 
 	 /* ------------------------------------------邀请朋友-------------------------------------- */
 	 //邀请好友
@@ -927,10 +881,10 @@ export default {
 	/* ------------------------------------------用户支持中心-------------------------------------- */
 	//用户支持中心
 	"Customer.title":"User Support Center", 
-	//欢迎来到 Deals Direct 的用户支持中心，我们的运营商已准备好为您服务。
-	"Customer.desc":"Welcome to Deals Direct User Support Center,Our operators are ready to serve you.", 
-	//提醒：我们的营业时间：每天08:00-22:00（欧洲标准时间）
-	"Customer.serviceTime":"Tips: Our business hours: 08:00-22:00 (European Standard Time) every day", 
+	//欢迎来到 Zalando 的用户支持中心，我们的运营商已准备好为您服务。
+	"Customer.desc":"Welcome to Zalando’s User Support Center,Our operators are ready to serve you.", 
+	//提醒：我们的营业时间：每天08:00-22:00（印度标准时间）
+	"Customer.serviceTime":"Reminder: Our operating time: 08:00-22:00 Daily (India Standard Time)", 
 	//在线
 	"online.title": "Online",
 	/* ------------------------------------------公用渲染界面readerView-------------------------------------- */
@@ -938,8 +892,8 @@ export default {
 	"render.PlatformPartners": "Platform Partners", 
 	//常见问题
 	"render.FAQ": "FAQ", 
-	//代理合作
-	"render.TeamMechanism": "Agency cooperation", 
+	//团队机制
+	"render.TeamMechanism": "Team Mechanism", 
 	//用户协议
 	"render.userAgreement": "User Agreement", 
 	//教程
@@ -997,215 +951,31 @@ export default {
 	//编辑成功
 	"Nickname.editSuccessfully": "Edited successfully!...", 
 	
-	/* ------------------------------------------邮箱注册界面-------------------------------------- */
-	//邮箱注册
-	"emailReg.title": "Email Registration",
-	//请输入您的电子邮件地址 请勿将您的帐号和密码透露给他人。
-	"emailReg.topTips": "Please enter your e-mail address Do not disclose your account number and password to others.",
-	//用户id
-	"emailReg.userID":"User ID",
-	//创建一个邮箱账号
-	"emailReg.createEmailAccount": "Create an email account",
-	//输入密码
-	"emailReg.enterPwd" : "Enter password",
-	//确认密码
-	"emailReg.confrimPwd" : "Confirm Password",
-	//邀请码
-	"emailReg.InvitationCode" : "Invitation Code",
-	//必须的
-	"emailReg.required" : "required",
-	//验证码
-	"emailReg.verCode":"Verification Code ", 
-	//我同意Deals Direct的
-	"emailReg.agree": "I agree with Deals Direct", 
-	//用户协议
-	"emailReg.Agreements": "User Agreements",
-	//立即注册
-	"emailReg.SignBtnText":"Sign up now", 
-	//关闭
-	"emailReg.close":"Close",
-	//验证码
-	"emailReg.startText": "Verification code",
-	//刷新
-	"emailReg.Refresh": "Refresh",
-	//邮箱不能为空
-	"emailReg.emailIsEmpty": "E-mail can not be empty",
-	//邮箱长度由 6 到 40 为字符组成！
-	"emailReg.emailRange": "Mailbox length consists of 6 to 40 characters!",
-	//邮箱格式不正确
-	"emailReg.emailFormatIncorrect": "E-mail format is incorrect",
-	//正在获取验证码
-	"emailReg.sending": "Getting verification code", 
-	//验证码已发送
-	"emailReg.sendsuccess": "Verification code has been sent", 
-	//密码不能为空
-	"emailReg.pwdIsEmpty": "The password cannot be empty!", 
-	//请再次确认密码
-	"emailReg.cpwdIsEmpty": "Please confirm the password again", 
-	//密码长度在 6 到 12 个字符之间！
-	"emailReg.pwdRange": "Password length is between 6 and 12 characters!",
-	//请输入8位数字的邀请码
-	"emailReg.referenceCode": "Please enter an eight-digit invitation code",
-	//密码不匹配
-	"emailReg.pwdDifferent": "Password Does Not Match",
-	//正在注册
-	"emailReg.registering": "Registering...",
-	//注册成功!
-	"emailReg.registerSuccess": "Registration succeeded!",
-	//请阅读并同意服务条款
-	"emailReg.RedOragree": "Please read and agree to the terms of service", 
-	//请输入邮箱验证码
-	"emailReg.emailCodeIsEmpty": "Please enter email verification code",
-	//请输入4位数字验证码
-	"emailReg.emailCodeRange": "Please enter a 4-digit verification code",
-	//用户ID不能为空
-	"emailReg.accountIsEmpty": "User ID cannot be empty!", 
-	//用户名长度在 3 到 20 个字符之间！
-	"emailReg.userIDRange": "Username length is between 3 and 20 characters!",
-	//请输入昵称
-	"emailReg.nickNameIsEmpty": "Please enter a nickname", 
-	//昵称长度为 3 到 20 位数字或字母
-	"emailReg.nickNameRang":"Nickname length is 3 to 20 digits or letters",
 	
-	/* ------------------------------------------未登录邮箱找回密码-------------------------------------- */
-	//重设密码
-	"emailResetPwd.title": "RESET PASSWORD",
-	//请输入您注册的电子邮件地址。验证码将发送给您。
-	"emailResetPwd.tips": "Please enter your registered email address. A verification code will be sent to you.",
-	//请输入您的电子邮件地址
-	"emailResetPwd.enterEmail": "Please enter your e-mail address",
-	//请输入您的邮箱验证码
-	"emailResetPwd.enterEmailVcode": "Please enter your email verification code",
-	//输入新密码
-	"emailResetPwd.enterNewPwd": "Enter new password" ,
-	//确认新密码
-	"emailResetPwd.confirmPwd": "Confirm new password",
-	//确认
-	"emailResetPwd.ConfirmBtnText": "Confirm" ,
-	//验证码
-	"emailResetPwd.startText": "Verification code",
-	//刷新
-	"emailResetPwd.Refresh": "Refresh",
-	//邮箱不能为空
-	"emailResetPwd.emailIsEmpty": "E-mail can not be empty",
-	//邮箱格式不正确
-	"emailResetPwd.emailFormatIncorrect": "E-mail format is incorrect",
-	//正在获取验证码
-	"emailResetPwd.sending": "Getting verification code", 
-	//验证码已发送
-	"emailResetPwd.sendsuccess": "Verification code has been sent", 
-	//邮箱长度由 6 到 40 为字符组成！
-	"emailResetPwd.emailRange": "Mailbox length consists of 6 to 40 characters!",
-	//请输入邮箱验证码
-	"emailResetPwd.emailCodeIsEmpty": "Please enter email verification code",
-	//请输入4位数字验证码
-	"emailResetPwd.emailCodeRange": "Please enter a 4-digit verification code",
-	//密码不能为空!
-	"emailResetPwd.pwdIsEmpty": "Password cannot be empty!",
-	//密码长度在 6 到 12 个字符之间！
-	"emailResetPwd.pwdRange": "Password length is between 6 and 12 characters!",
-	//请再次确认你的密码
-	"emailResetPwd.EnterConfirmpassword": "Please confirm your password again",
-	//密码不匹配
-	"emailResetPwd.pwdDifferent": "Password Does Not Match",
-	//正在修改...
-	"emailResetPwd.loading": "Modifying...", 
-	//重置成功!
-	"emailResetPwd.resetsuccess": "Reset succeeded!",
-	
-	/* ------------------------------------------已登录邮箱找回密码-------------------------------------- */
-	//重设密码
-	"loginEmailResetPwd.title": "Reset Password" ,
-	//请输入您的电子邮件地址
-	"loginEmailResetPwd.pEnterEmailAddress": "Please enter your e-mail address" ,
-	//请输入您的邮箱验证码
-	"loginEmailResetPwd.pEnterEmailAddressVercode": "Please enter your email verification code" ,
-	 //输入新密码
-	 "loginEmailResetPwd.enterNewPwd": "Enter new password" ,
-	 //确认新密码
-	 "loginEmailResetPwd.confirmPwd": "Confirm new password",
-	 //确认
-	"loginEmailResetPwd.ConfirmBtnText": "Confirm" ,
-	//验证码
-	"loginEmailResetPwd.startText": "Verification code",
-	//刷新
-	"loginEmailResetPwd.Refresh": "Refresh",
-	//邮箱不能为空
-	"loginEmailResetPwd.emailIsEmpty": "E-mail can not be empty",
-	//邮箱格式不正确
-	"loginEmailResetPwd.emailFormatIncorrect": "E-mail format is incorrect",
-	//正在获取验证码
-	"loginEmailResetPwd.sending": "Getting verification code", 
-	//验证码已发送
-	"loginEmailResetPwd.sendsuccess": "Verification code has been sent", 
-	//邮箱长度由 6 到 40 为字符组成！
-	"loginEmailResetPwd.emailRange": "Mailbox length consists of 6 to 40 characters!",
-	//请输入邮箱验证码
-	"loginEmailResetPwd.emailCodeIsEmpty": "Please enter email verification code",
-	//请输入4位数字验证码
-	"loginEmailResetPwd.emailCodeRange": "Please enter a 4-digit verification code",
-	//输入新密码
-	"loginEmailResetPwd.enterNewPwd": "Enter new password" ,
-	//确认新密码
-	"loginEmailResetPwd.confirmPwd": "Confirm new password",
-	//密码长度在 6 到 12 个字符之间！
-	"loginEmailResetPwd.pwdRange": "Password length is between 6 and 12 characters!",
-	//密码不匹配
-	"loginEmailResetPwd.pwdDifferent": "Password Does Not Match",
-	//正在修改...
-	"loginEmailResetPwd.loading": "Modifying...", 
-	//重置成功!
-	"loginEmailResetPwd.resetsuccess": "Reset succeeded!",
-	
-	/* ------------------------------------------邮箱地址-------------------------------------- */
-	//邮箱地址
-	"emailAddress.title": "Email Address",
-	//请输入您的邮件地址
-	"emailAddress.pEmailAddress": "Please enter your e-mail address",
-	//请输入邮箱验证码
-	"emailAddress.pEnterVcode":"Please enter email verification code",
-	//请输入新的电子邮件地址
-	"emailAddress.pNEmailAddress":"Please enter a new email address",
-	//确认
-	"emailAddress.ConfirmBtnText": "Confirm",
-	//验证码
-	"emailAddress.startText": "Verification code",
-	//刷新
-	"emailAddress.Refresh": "Refresh",
-	//邮箱长度由 6 到 40 为字符组成！
-	"emailAddress.emailRange": "Mailbox length consists of 6 to 40 characters!",
-	//邮箱格式不正确
-	"emailAddress.emailFormatIncorrect": "E-mail format is incorrect",
-	//正在获取验证码
-	"emailAddress.sending": "Getting verification code", 
-	//验证码已发送
-	"emailAddress.sendsuccess": "Verification code has been sent", 
-	//绑定成功!!!
-	"emailAddress.bindsuccess": "Binding succeeded!", 
-	//请输入4位数字验证码
-	"emailAddress.emailCodeRange": "Please enter a 4-digit verification code",
-	
-	/* ------------------------------------------轮盘-------------------------------------- */
-	//幸运之轮
-	"Roulette.title": "Wheel of Fortune",
-	//抽奖次数
-	"Roulette.Number": "Number of draws",
-	//幸运奖品
-	"Roulette.prize": "Lucky prize",
-	//确认
-	"Roulette.confirm": "Confirm",
-	//恭喜您，获得{0}!
-	"Roulette.getPrize": "Congratulations, you got {0}",
-	//抽奖次数不足
-	"Roulette.numberNull": "Insufficient number of draws",
+	/* ------------------------------------------九宫格抽奖界面-------------------------------------- */
+	//幸运抽奖
+	"LOTTERY.TITLE": "Lucky Draw",
+	"LOTTERY.Go": "Play",
+	//活动规则
+	"LOTTERY.descTitle": "Campaign Rules",
+	//a) 有机会获得OPPO Find X5 Pro、500usdt、100usdt、50usdt!
+	"LOTTERY.descA": "a) Stand a chance to win OPPO Find X5 Pro, 500usdt, 100usdt, 50usdt! ",
+	//b) 每次抽奖将从您的账户中扣除1usdt，获奖后奖励将直接支付到您的账户中
+	"LOTTERY.descB": "b) 1usdt will be deducted from your account for each draw, and the reward will be paid directly to your account after winning! ",
+	//c) Zalando将从2022年8月20日至2022年8月31日送出10,00,000份奖品!
+	"LOTTERY.descC": "c) Zalando DDP is giving away 10,00,000 prizes from 20 August 2022 to 31 August 2022 !",
+	//幸运抽奖结果
+	"LOTTERY.RESULTtITLE": "Lucky Draw Results",
+	//确定
+	"LOTTERY.confirm": "Confirm",
+	//奖品
+	"LOTTERY.prize": "Prize",
+	//抽奖时间
+	"LOTTERY.time": "Draw Time",
 	//抽奖记录
-	"Roulette.RECORD": "Lottery record",
-	//抽奖日期
-	"Roulette.date": "Draw date",
-	//活动详情
-	"Roulette.detail": "Activity details",
-	//DealsDirect 支持代理团队发展。 帮助团队成长。即将启动轮盘奖金计划。 所有客户升级等级，根据不同等级获得轮盘抽奖机会。
-	"Roulette.desc": "DealsDirect supports agency team development. Help the team grow. The roulette bonus program will be launched soon. All customers upgrade their levels and get roulette lottery chances according to different levels.",
+	"LOTTERY.record": "Lottery Record",
+	
+	
 	
 	/* ------------------------------------------上拉加载下拉刷新-------------------------------------- */
 	//加载失败点击重新加载
@@ -1247,8 +1017,8 @@ export default {
 	"config.resultCode3": "Incorrect password!",
 	//旧密码不正确
 	"config.resultCode4": "The old password is incorrect!",
-	//用户已存在
-	"config.resultCode5": "User already exists!",
+	//此用户 ID 已被使用，请更换另一个 ID。
+	"config.resultCode5": "This User ID has been used,please change another ID!",
 	//用户不存在
 	"config.resultCode6": "User does not exist!",
 	//验证码错误
@@ -1257,10 +1027,10 @@ export default {
 	"config.resultCode8": "No permission!",
 	//赔率已发生变化
 	"config.resultCode9": "Odds have changed",
-	//用户已冻结
-	"config.resultCode10": "User is frozen!",
-	//用户余额不足
-	"config.resultCode11": "Insufficient user balance!",
+	//发现您的账号操作异常，请联系用户支持
+	"config.resultCode10": "Abnormal operation found on your account, please contact user support!",
+	//账户余额不足
+	"config.resultCode11": "Insufficient account balance!",
 	//超出投注最大或最小金额
 	"config.resultCode12": "Exceeded maximum or minimum bet amount",
 	//游戏已停售
@@ -1302,7 +1072,7 @@ export default {
 	//手机号码已绑定
 	"config.resultCode31": "Mobile number already in use",
 	//手机验证码不正确
-	"config.resultCode32": "verification code is incorrect!",
+	"config.resultCode32": "The mobile phone verification code is incorrect!",
 	//彩票已停售
 	"config.resultCode33": "Lottery tickets have been discontinued",
 	//彩票玩法已停售
@@ -1396,15 +1166,9 @@ export default {
 	//验证令牌失效
 	"config.resultCode401": "Authentication token invalid",
 	//没有开通过房间，不能提款
-	"config.resultCode141": "Can't withdraw money without opening the room",
+	"config.resultCode141": "Room not open",
 	//提现密码错误
 	"config.resultCode142": "Your withdrawal password is incorrect! Please try again.",
 	//您尚未完成首次提款，不允许转账。
-	"config.resultCode143": "You have not completed your first withdrawal, transfer is not allowed.",
-	//邮箱不存在
-	"config.resultCode144": "Email does not exist",
-	//等级不够
-	"config.resultCode145": "Class requirements not met",
-	//恭喜你获得超级佣金订单
-	"config.resultCode146": "Congratulations on your super commission order"
+	"config.resultCode143": "You have not completed your first withdrawal, transfer is not allowed."
 }

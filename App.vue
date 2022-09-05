@@ -1,5 +1,14 @@
 <script>
 	export default {
+		onLaunch: function() {
+			let lid = uni.getStorageSync('lang').Name;
+			if(!lid) {
+				uni.setStorageSync('lang',{
+					lid: '17717cf9-3115-4c7f-bdcc-e709ead9f50d',
+					Name: 'en'
+				});
+			}
+		},
 	}
 </script>
 
@@ -25,6 +34,10 @@
 	@font-face {
 		font-family: PingFang-ExtraLight;
 		src:url('@/static/font/PingFang-ExtraLight_0.ttf');
+	}
+	@font-face {
+		font-family: Helvetica;
+		src:url('@/static/font/Helvetica.ttf');
 	}
 	/*每个页面公共css */
 </style>

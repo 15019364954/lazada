@@ -1,72 +1,17 @@
 <template>
-	<view class="login">
+	<view class="resetPwd">
 		<view class="header" :style="{height: statusBarHeight+'px',paddingTop: statusBarHeight-50+'px'}">
 			<navigator open-type="navigate" class="back" url="/pages/userAuth/login" hover-class="none">
 				<u-icon name="arrow-left" color="#FF5261" size="60rpx"></u-icon>
 			</navigator>
-			Register
+			Login Password Reset
 		</view>
+
 		<view class="container">
 			<view class="form">
-				<view class="settingLanguage">Language Settings</view>
-				<view class="title">Hello,User</view>
-				<view class="title_desc">Please enter your Phone and Password to login</view>
-				<!-- 账号 -->
-				<u-input :placeholder="$t('registerUser.createAccountPlace')" border="none" clearable type="text"
-					v-model="form.userId" :class="accountFocusClass" placeholderClass="placeholderClass"
-					@focus="InputFocus('account')" @blur="InputBlur()">
-				</u-input>
-
-				<!-- 昵称 -->
-				<u-input :placeholder="$t('registerUser.nickName')" border="none" clearable class="input"
-					v-model="form.name" :class="nameFocusClass" placeholderClass="placeholderClass"
-					@focus="InputFocus('name')" @blur="InputBlur()">
-				</u-input>
-
-				<!-- 密码 -->
-				<u-input v-if="plaintext" :placeholder="$t('registerUser.enterPwdPlace')" border="none" clearable
-					v-model="form.password" type="text" :class="pwdFocusClass" placeholderClass="placeholderClass"
-					@focus="InputFocus('pwd')" @blur="InputBlur()">
-					<u-icon size="40rpx" :name="plaintext?'eye-fill':'eye-off'" slot="suffix"
-						@click="changPlaintext(0)"></u-icon>
-				</u-input>
-				<view v-if="!plaintext">
-					<!-- 密码 -->
-					<u-input :placeholder="$t('registerUser.enterPwdPlace')" border="none" clearable
-						v-model="form.password" type="password" :class="pwdFocusClass"
-						placeholderClass="placeholderClass" @focus="InputFocus('pwd')" @blur="InputBlur()">
-						<u-icon size="40rpx" :name="plaintext?'eye-fill':'eye-off'" slot="suffix"
-							@click="changPlaintext(0)"></u-icon>
-					</u-input>
-				</view>
-				<!-- 确认密码 -->
-				<u-input v-if="plaintext2" type="text" :placeholder="$t('registerUser.comfrimPwdPlace')" border="none"
-					clearable v-model="form.confirm" :class="cpwdFocusClascs" placeholderClass="placeholderClass"
-					@focus="InputFocus('cpwd')" @blur="InputBlur()">
-					<u-icon size="40rpx" :name="plaintext2?'eye-fill':'eye-off'" slot="suffix"
-						@click="changPlaintext(1)"></u-icon>
-				</u-input>
-				<view v-if="!plaintext2">
-					<!-- 确认密码 -->
-					<u-input :placeholder="$t('registerUser.comfrimPwdPlace')" border="none" clearable
-						v-model="form.confirm" type="password" :class="cpwdFocusClascs"
-						placeholderClass="placeholderClass" @focus="InputFocus('cpwd')" @blur="InputBlur()">
-						<u-icon size="40rpx" :name="plaintext2?'eye-fill':'eye-off'" slot="suffix"
-							@click="changPlaintext(1)"></u-icon>
-					</u-input>
-				</view>
-				<!-- 邀请码 -->
-				<view class="required">
-					<u-input :placeholder="$t('registerUser.invitationCode')" border="none" clearable
-						v-model="form.invitationCode" type="number" :class="inCodeFocusClass"
-						placeholderClass="placeholderClass" @focus="InputFocus('inCode')" @blur="InputBlur()">
-					</u-input>
-				</view>
-
-				<!-- 手机号码 -->
-				<u-input :placeholder="$t('registerUser.mobile')" border="none" clearable type="number"
-					v-model="form.mobile" :class="mobileFocusClass" placeholderClass="placeholderClass"
-					@focus="InputFocus('mobile')" @blur="InputBlur()">
+				<!-- 输入手机号码 -->
+				<u-input border="none" clearable type="number" v-model="form.mobile" :class="phoneFocusClass"
+					placeholderClass="placeholderClass" @focus="InputFocus('phone')" @blur="InputBlur()" placeholder="Enter your Phone number">
 					<view slot="prefix">
 						<view class="areaCodeBox" @click="open">
 							<u-text :text="PhoneCode" class="code"></u-text>
@@ -75,70 +20,72 @@
 					</view>
 				</u-input>
 
-				<!-- 验证码 -->
-				<!-- 手机号码 -->
-				<u-input :placeholder="$t('registerUser.mobileCode')" border="none" clearable type="number"
-					v-model="form.authCode" :class="authCodeFocusClass" placeholderClass="placeholderClass"
-					@focus="InputFocus('authCode')" @blur="InputBlur()">
+				<u-input border="none" clearable type="number" v-model="form.authCode" :class="authCodeFocusClass"
+					placeholderClass="placeholderClass" @focus="InputFocus('authCode')" @blur="InputBlur()" placeholder="Enter your verification code">
 					<view slot="suffix">
 						<view :class="otpStyle" @tap="getCode">{{tips}}</view>
 					</view>
 				</u-input>
 
-				<view class="save_forget">
-					<view class="save">
-						<view :class="savePwdClass" @click="remoberPassword"></view>
-						<view class="text" @click="remoberPassword">{{$t('registerUser.agree')}}</view>
-					</view>
-					<view class="protocol" @click="handleProtocol">《 {{$t('registerUser.Agreements')}} 》</view>
+				<!-- 输入密码 -->
+				<u-input v-if="plaintext" border="none" clearable type="text" v-model="form.newPassword"
+					:class="pwdFocusClass" placeholderClass="placeholderClass" @focus="InputFocus('pwd')"
+					@blur="InputBlur()" placeholder="Create your new login password">
+					<u-icon size="40rpx" :name="plaintext?'eye-fill':'eye-off'" slot="suffix"
+						@click="changPlaintext(0)"></u-icon>
+				</u-input>
+				<view v-if="!plaintext">
+					<u-input border="none" clearable type="password" v-model="form.newPassword" :class="pwdFocusClass"
+						placeholderClass="placeholderClass" @focus="InputFocus('pwd')" @blur="InputBlur()" placeholder="Confirm your new login password">
+						<u-icon size="40rpx" :name="plaintext?'eye-fill':'eye-off'" slot="suffix"
+							@click="changPlaintext(0)"></u-icon>
+					</u-input>
+				</view>
+
+				<!-- 确认密码 -->
+				<u-input v-if="plaintext2" border="none" clearable type="text" v-model="form.confirm"
+					:class="cpwdFocusClascs" placeholderClass="placeholderClass" @focus="InputFocus('cpwd')"
+					@blur="InputBlur()" placeholder="Confirm your new login password">
+					<u-icon size="40rpx" :name="plaintext2?'eye-fill':'eye-off'" slot="suffix"
+						@click="changPlaintext(1)"></u-icon>
+				</u-input>
+				<view v-if="!plaintext2">
+					<u-input border="none" clearable type="password" v-model="form.confirm" :class="cpwdFocusClascs"
+						placeholderClass="placeholderClass" @focus="InputFocus('cpwd')" @blur="InputBlur()" placeholder="Confirm your new login password">
+						<u-icon size="40rpx" :name="plaintext2?'eye-fill':'eye-off'" slot="suffix"
+							@click="changPlaintext(1)"></u-icon>
+					</u-input>
 				</view>
 				<!-- Login button -->
 				<wyb-button :class="loginBtnEnable?'loginBtn':'disabledLogin'" type="hollow" :ripple="true"
-					:disabled="loginBtnEnable?false:true" @click="submit">Register</wyb-button>
+					:disabled="loginBtnEnable?false:true" @click="confirm">Save</wyb-button>
 				<!-- logo -->
 				<view class="logo"></view>
 
 			</view>
 		</view>
 		<!-- 地区弹窗 -->
-				<u-popup 
-					:show="show" 
-					@close="close" 
-					:closeable="false"
-					mode="right"
-					:safeAreaInsetTop="true"
-					:closeOnClickOverlay="true"
-				>
-					<view class="content" :style="{paddingTop: isPhone?statusBarHeight-30+'px':'30px'}">
-						<u--input
-							class="search"
-							v-model="searchValue"
-							prefixIcon="search"
-							@change="handleChange"
-							:clearable	="true"
-							prefixIconStyle="font-size: 22px;color: #909399"
-						></u--input>
-						<view class="scroll-element">
-							<scroll-view scroll-y="true" :style="'height:'+ElementHeight+'px'">
-								<view 
-									v-for="(item, index) in countryData" 
-									:key="index" 
-									:class="'items'+' '+(index+1==countryData.length?'lastItem':'')" 
-									@click="handleChecked(item)"
-									:id="index==countryData.length?'lastItem':''"
-								>
-									<view class="u-line-1 leftEn">
-										{{item["en"]}}
-									</view>
-									<view>{{item["phone_code"]}}</view>
-								</view>
-							</scroll-view>
+		<u-popup :show="show" @close="close" :closeable="false" mode="right" :safeAreaInsetTop="true"
+			:closeOnClickOverlay="true">
+			<view class="content" :style="{paddingTop: isPhone?statusBarHeight-30+'px':'30px'}">
+				<u--input class="search" v-model="searchValue" prefixIcon="search" @change="handleChange"
+					:clearable="true" prefixIconStyle="font-size: 22px;color: #909399"></u--input>
+				<view class="scroll-element">
+					<scroll-view scroll-y="true" :style="'height:'+ElementHeight+'px'">
+						<view v-for="(item, index) in countryData" :key="index"
+							:class="'items'+' '+(index+1==countryData.length?'lastItem':'')"
+							@click="handleChecked(item)" :id="index==countryData.length?'lastItem':''">
+							<view class="u-line-1 leftEn">
+								{{item["en"]}}
+							</view>
+							<view>{{item["phone_code"]}}</view>
 						</view>
-					</view>
-				</u-popup>
+					</scroll-view>
+				</view>
+			</view>
+		</u-popup>
 		<u-code :seconds="seconds" ref="uCode" :key="keyId" @change="codeChange"
-			:startText="$t('registerUser.startText')" changeText="XS"
-			:endText="$t('registerUser.Refresh')">
+			:startText="$t('registerUser.startText')" changeText="XS" :endText="$t('registerUser.Refresh')">
 		</u-code>
 
 		<drag-btn></drag-btn>
@@ -147,72 +94,49 @@
 </template>
 
 <script>
-	import md5 from "js-md5";
-	import {
-		nanoid
-	} from 'nanoid'
+	import {SendMobileAuthCode, ResetPasswordNoLogin} from '@/common/api.js';
+	import {nanoid} from 'nanoid'
 	import countryData from '@/common/countryCode.js';
-	import {
-		RegisterPc,
-		GetBaseLanguageSet,
-		SendMobileAuthCodeNoBind
-	} from '@/common/api.js';
+	import md5 from "js-md5";
 	export default {
 		data() {
 			return {
 				isPhone: false,
 				statusBarHeight: 50,
-				accountFocusClass: 'input',
+				phoneFocusClass: 'input',
 				pwdFocusClass: 'input',
 				cpwdFocusClascs: 'input',
-				inCodeFocusClass: 'input',
-				nameFocusClass: 'input',
-				emailFocusClass: 'input',
-				mobileFocusClass: 'input',
 				authCodeFocusClass: 'input',
+				countryData: countryData.code, //区号数据
+				show: false,
+				searchValue: '',
+				PhoneCode: '+91',
+				ElementHeight: 400,
+				area: 'India',
 				form: {
-					userId: '', //账号
-					password: '', //密码
-					confirm: '', //确认密码
-					invitationCode: "", //邀请码
-					name: '', //昵称
-					email: '', //邮箱
 					mobile: '', //手机号码
-					authCode: '',
-					agree: false, //是否同意用户协议
+					newPassword: '', //密码
+					confirm: '', //确认密码
+					authCode: '', //手机验证码
 				},
-				data: '', //用户协议内容
-				showProtocol: false, //是否显示用户协议
 				plaintext: false, //是否明文密码
 				plaintext2: false, //是否明文密码
-				PhoneCode: '+91',
 				seconds: 60, //验证码倒计时
 				tips: '', //验证码提示文本
-				ElementHeight: 400,
-				countryData: countryData.code, //区号数据
-				searchValue: '',
-				show: false,
 				keyId: nanoid(),
-				isSubmit: false
+				isSubmit: false,
 			}
 		},
 		computed: {
-			savePwdClass() {
-				return this.form.agree ? "save_icon_active" : "save_icon"
-			},
 			// 是否启用登录按钮
 			loginBtnEnable() {
 				const {
-					userId,
-					password,
 					confirm,
-					invitationCode,
-					name,
+					newPassword,
 					mobile,
-					agree,
 					authCode
 				} = this.form;
-				if(userId==''||password==''||confirm==''||invitationCode==''||name==''||mobile==''||authCode==""||agree==false) {
+				if(confirm==''||mobile==''||authCode==""||newPassword=='') {
 					return false;
 				} else {
 					return true;
@@ -233,17 +157,108 @@
 			}
 		},
 		methods: {
-			
+
+			/* 判断手机号有没有输入 */
+			mobileRules() {
+				const {
+					mobile
+				} = this.form;
+				if (!mobile) { //空
+					return this.$t('forGetPwd.mobileIsEmpty');
+				}
+				if (mobile.length < 5 || mobile.length > 20) { //少于5大于20
+					return this.$t('forGetPwd.mobileRange');
+				}
+				return '';
+			},
+			async getCode() {
+				if (this.$refs.uCode.canGetCode) {
+					let mobileRules = this.mobileRules();
+					if (mobileRules) {
+						this.$refs.uToast.show({
+							message: mobileRules,
+							type: 'error',
+							duration: 2000,
+						})
+						return;
+					}
+					//判断手机号码是否正确
+					// 模拟向后端请求验证码
+					uni.showLoading({
+						title: this.$t('forGetPwd.sending')
+					})
+					const res = await SendMobileAuthCode({
+						mobile: this.PhoneCode + this.form.mobile
+					});
+					uni.hideLoading();
+					if (res.data.resultCode == 1) {
+						let _this = this;
+						_this.$refs.uCode.start();
+						_this.$refs.uToast.show({
+							message: _this.$t('forGetPwd.sendsuccess'),
+							type: 'success',
+							duration: 2000,
+						})
+					} else {
+						this.$refs.uToast.show({
+							message: this.$t("config.resultCode" + res.data.resultCode),
+							type: 'error',
+							duration: 2000,
+						})
+					}
+				}
+			},
+
+			codeChange(text) {
+				this.tips = text;
+			},
+
+			/* 点击是否显示密码icon */
+			changPlaintext(type) {
+				if (type) {
+					this.plaintext2 = !this.plaintext2
+				} else {
+					this.plaintext = !this.plaintext
+				}
+			},
+
+			/* 获取焦点*/
+			InputFocus(tag) {
+				if (tag == 'phone') {
+					this.phoneFocusClass = 'input phoneFocus'
+				} else if (tag == 'pwd') {
+					this.pwdFocusClass = 'input pwdFocus'
+				} else if (tag == 'cpwd') {
+					this.cpwdFocusClascs = 'input cpwdFocus'
+				} else {
+					this.authCodeFocusClass = "input authCodeFocus"
+					this.$refs.uToast.show({
+						message: "Please click OTP to get SMS verification code",
+						type: '',
+						position: "bottom",
+						duration: 2000,
+					})
+				}
+			},
+
+			/* 失去焦点 */
+			InputBlur() {
+				this.phoneFocusClass = 'input';
+				this.pwdFocusClass = 'input'
+				this.cpwdFocusClascs = 'input'
+				this.authCodeFocusClass = "input"
+			},
+
 			close() {
-				this.show = false;
 				this.searchValue = '';
-				this.countryData = countryData.code; //区号数据
+				this.countryData = countryData.code
+				this.show = false;
 			},
 
 			open() {
-				this.show = true;
 				this.searchValue = '';
-				this.countryData = countryData.code; //区号数据
+				this.countryData = countryData.code
+				this.show = true;
 				let windowHeight = uni.getSystemInfoSync().windowHeight;
 				this.ElementHeight = windowHeight - this.statusBarHeight - uni.upx2px(64);
 			},
@@ -263,191 +278,56 @@
 			//处理选中号码
 			handleChecked(item) {
 				this.PhoneCode = item['phone_code'];
+				this.area = item['en'];
 				this.show = false;
 			},
 
-			mobileRules() {
-				const {
-					mobile
-				} = this.form;
-				if (!mobile) { //空
-					return this.$t('registerUser.mobileIsEmpty');
-				}
-				if (mobile.length < 5 || mobile.length > 20) { //少于5大于20
-					return this.$t('registerUser.mobileRange');
-				}
-				return '';
-			},
 
-			codeChange(text) {
-				this.tips = text;
-			},
-
-			async getCode() {
-				if (this.$refs.uCode.canGetCode) {
-					let {
-						mobile,
-						newPassword,
-						confirm
-					} = this.form;
-					//判断手机号码是否正确
-					let mobileRules = this.mobileRules();
-					if (mobileRules) {
-						this.$refs.uToast.show({
-							message: mobileRules,
-							type: 'error',
-							duration: 2000,
-						})
-						return;
-					}
-					// 模拟向后端请求验证码
-					uni.showLoading({
-						title: this.$t('registerUser.sending')
-					})
-					const res = await SendMobileAuthCodeNoBind({
-						mobile: this.PhoneCode + mobile
-					});
-					uni.hideLoading();
-					if (res.data.resultCode == 1) {
-						let _this = this;
-						_this.$refs.uCode.start();
-						_this.$refs.uToast.show({
-							message: _this.$t('registerUser.sendsuccess'),
-							type: 'success',
-							duration: 2000,
-						})
-					} else {
-						this.$refs.uToast.show({
-							message: this.$t("config.resultCode" + res.data.resultCode),
-							type: 'error',
-							duration: 2000,
-						})
-					}
-				}
-			},
-
-			/* 点击是否显示密码icon */
-			changPlaintext(type) {
-				if (type) {
-					this.plaintext2 = !this.plaintext2
-				} else {
-					this.plaintext = !this.plaintext
-				}
-			},
-
-			/* 获取焦点*/
-			InputFocus(tag) {
-				if (tag == 'account') {
-					this.accountFocusClass = 'input accountFocus'
-				} else if (tag == 'pwd') {
-					this.pwdFocusClass = 'input pwdFocus'
-				} else if (tag == 'cpwd') {
-					this.cpwdFocusClascs = 'input cpwdFocus'
-				} else if (tag == 'name') {
-					this.nameFocusClass = 'input inCodeFocus'
-				} else if (tag == 'email') {
-					this.emailFocusClass = 'input emailFocus'
-				} else if (tag == "mobile") {
-					this.mobileFocusClass = 'input mobileFocus'
-				} else if (tag == "authCode") {
-					this.authCodeFocusClass = 'input authCodeFocus'
-					this.$refs.uToast.show({
-						message: "Please click OTP to get SMS verification code",
-						type: '',
-						position: "bottom",
-						duration: 2000,
-					})
-				} else {
-					this.inCodeFocusClass = 'input inCodeFocus'
-				}
-			},
-
-			/* 失去焦点 */
-			InputBlur() {
-				this.pwdFocusClass = 'input'
-				this.accountFocusClass = 'input'
-				this.cpwdFocusClascs = 'input'
-				this.inCodeFocusClass = 'input'
-				this.nameFocusClass = 'input'
-				this.emailFocusClass = 'input'
-				this.mobileFocusClass = 'input'
-				this.authCodeFocusClass = 'input'
-			},
-
-			/* 同意用户协议 */
-			remoberPassword() {
-				this.$set(this.form, 'agree', !this.form.agree);
-				console.log(this.form);
-			},
-
-			//规则校验函数
+			/* 校验用户输入 */
 			rules() {
 				const {
-					userId,
-					password,
+					mobile,
+					newPassword,
 					confirm,
-					invitationCode,
-					name,
-					agree,
-					authCode,
-					mobile
+					authCode
 				} = this.form;
-				if (!userId) { //空
-					return this.$t('registerUser.accountIsEmpty');
-				}
-				if (userId.length < 3 || userId.length > 20) { //少于3大于20
-					return this.$t('registerUser.userIDRange');
-				}
-				if (!uni.$u.test.enOrNum(userId)) {
-					return this.$t('registerUser.accountIsDorletters');
-				}
-				if (!name) {
-					return this.$t('registerUser.nickNameIsEmpty');
-				}
-				if (name.length < 3 || name.length > 20) {
-					return this.$t('registerUser.nickNameRang');
-				}
 				if (!mobile) { //空
-					return this.$t('registerUser.mobileIsEmpty');
+					return this.$t('forGetPwd.mobileIsEmpty');
 				}
 				if (mobile.length < 5 || mobile.length > 20) { //少于5大于20
-					return this.$t('registerUser.mobileRange');
+					return this.$t('forGetPwd.mobileRange');
 				}
 				if (!authCode) { //空
-					return this.$t('registerUser.mobileCodeIsEmpty');
+					return this.$t('forGetPwd.mobileCodeIsEmpty');
 				}
-				if (authCode.length != 4) { //少于5大于5
-					return this.$t('registerUser.mobileCodeRange');
+				if (authCode.length != 4) { //少于4
+					return this.$t('forGetPwd.mobileCodeRange');
 				}
-				if (!password) { //空
-					return this.$t('registerUser.pwdIsEmpty');
+				if (!newPassword) { //空
+					return this.$t('forGetPwd.pwdIsEmpty');
 				}
-				if (password.length < 6 || password.length > 12) { //少于6大于12
-					return this.$t('registerUser.pwdRange');
+				if (newPassword.length < 6 || newPassword.length > 12) { //少于6大于12
+					return this.$t('forGetPwd.pwdRange');
 				}
 				if (!confirm) { //空
-					return this.$t('registerUser.EnterConfirmpassword');
+					return this.$t('forGetPwd.EnterConfirmpassword');
 				}
 				if (confirm.length < 6 || confirm.length > 12) { //少于6大于12
-					return this.$t('registerUser.pwdRange');
+					return this.$t('forGetPwd.pwdRange');
 				}
 
-				if (!invitationCode) { //空
-					return this.$t('registerUser.referenceCode');
-				}
-				if (invitationCode.length < 8 || invitationCode.length > 8) { //8
-					return this.$t('registerUser.referenceCode');
-				}
-				/* 判断是否同意用户协议 */
-				if (agree == false) {
-					return this.$t('registerUser.RedOragree');
-				}
 			},
 
-			//注册账号
-			async submit() {
+			/* 下一步获取验证码 */
+			async confirm() {
 				//处理用户注册逻辑
 				let rulesFail = this.rules();
+				let {
+					mobile,
+					newPassword,
+					confirm,
+					authCode
+				} = this.form;
 				if (rulesFail) {
 					this.$refs.uToast.show({
 						message: rulesFail,
@@ -456,27 +336,20 @@
 					})
 					return;
 				}
-				const params = {
-					name: this.form.name,
-					// email: this.form.email,
-					password: md5(this.form.password),
-					userID: this.form.userId,
-					mobile: this.PhoneCode + this.form.mobile,
-					authCode: this.form.authCode,
-					invitationCode: this.form.invitationCode
-				}
+
 				//判断密码和确认密码是否一致
-				const {
-					password,
-					confirm
-				} = this.form;
-				if (password !== confirm) {
+				if (newPassword !== confirm) {
 					this.$refs.uToast.show({
-						message: this.$t('registerUser.pwdDifferent'),
+						message: this.$t('forGetPwd.pwdDifferent'),
 						type: 'error',
-						duration: 1500,
+						duration: 2000,
 					})
 					return;
+				}
+				let params = {
+					mobile: this.PhoneCode + mobile,
+					authCode: authCode,
+					newPassword: md5(newPassword),
 				}
 				//防止重复提交
 				if (this.isSubmit) {
@@ -485,14 +358,11 @@
 					this.isSubmit = true;
 				}
 				uni.showLoading({
-					title: this.$t('registerUser.registering')
+					title: this.$t('forGetPwd.loading')
 				});
-				//验证成功请求注册，跳转到账号登录页面
-				const res = await RegisterPc({
-					...params
-				});
-				this.isSubmit = false;
+				const res = await ResetPasswordNoLogin(params);
 				uni.hideLoading();
+				this.isSubmit = false;
 				const networkError = this.$u.utils.handleNetwork(res);
 				if (networkError) {
 					this.$refs.uToast.show({
@@ -505,20 +375,14 @@
 				let _that = this;
 				if (res.data.resultCode === 1) {
 					this.$refs.uToast.show({
-						message: this.$t('registerUser.registerSuccess'),
+						message: this.$t('forGetPwd.resetsuccess'),
 						type: 'success',
 						duration: 2000,
 						complete() {
 							uni.setStorageSync("isRemember", null);
-							//缓存用户token
-							uni.$u.vuex("vuex_token", res.data.resultData.accessToken);
-							//保存用户信息到本地
-							uni.setStorageSync('userInfo', res.data.resultData)
-							/* 清空头像 */
-							uni.setStorageSync('faceUrl', '')
 							_that.$u.route({
-								type: 'switchTab',
-								url: '/pages/index/index'
+								type: 'reLaunch',
+								url: '/pages/userAuth/login'
 							})
 						}
 					})
@@ -526,46 +390,9 @@
 					this.$refs.uToast.show({
 						message: this.$t("config.resultCode" + res.data.resultCode),
 						type: 'error',
-						duration: 1500,
-					})
-				}
-			},
-
-			//获取内容
-			async GetBaseLanguageSetData(isShow) {
-				const params = {
-					lid: uni.getStorageSync('lang').Name,
-					tid: 5
-				}
-				const res = await GetBaseLanguageSet(params);
-				const networkError = this.$u.utils.handleNetwork(res);
-				if (networkError) {
-					this.$refs.uToast.show({
-						message: networkError,
-						type: 'error',
-						duration: 2000,
-					})
-					return;
-				}
-				if (res.data.resultCode == 1) {
-					if (isShow) {
-						this.showProtocol = true;
-					}
-					this.data = res.data.resultData;
-				} else {
-					this.$refs.uToast.show({
-						message: this.$t("config.resultCode" + res.data.resultCode),
-						type: 'error',
 						duration: 2000,
 					})
 				}
-			},
-
-			//点击用户协议
-			handleProtocol() {
-				uni.navigateTo({
-					url:"/pages/UserAgreement/UserAgreement"
-				})
 			}
 		},
 		onLoad(options) {
@@ -575,24 +402,16 @@
 			this.isPhone = true;
 			this.statusBarHeight = statusBarObj.statusBarHeight + this.statusBarHeight;
 			//#endif
-			if (options.hasOwnProperty('vcode')) {
-				this.$set(this.form, 'invitationCode', options.vcode);
-			}
-
 		},
-		onShow() {
-			this.GetBaseLanguageSetData();
-			this.isSubmit = false;
-		}
 	}
 </script>
 <style>
 	page {
-		background: #F7F7F7 !important;
+		background-color: #f7f7f7 !important;
 	}
 </style>
 <style lang="less" scoped>
-	.login {
+	.resetPwd {
 		padding-bottom: 100rpx;
 			.scroll-Y {
 					height: 700rpx;
@@ -648,7 +467,7 @@
 			font-weight: 500;
 			text-align: right;
 			color: #ff5261;
-
+	
 			.back {
 				width: 100rpx;
 				height: 54rpx;
@@ -658,19 +477,19 @@
 				left: 24rpx;
 			}
 		}
-
+	
 		.container {
 			width: 100%;
 			box-sizing: border-box;
 			padding: 0 24rpx;
-
+	
 			.form {
 				background-color: #fff;
 				height: max-content;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-
+				padding-top: 80rpx;
 				.settingLanguage {
 					width: auto;
 					height: 40rpx;
@@ -684,7 +503,7 @@
 					margin-top: 28rpx;
 					margin-right: 44rpx;
 				}
-
+	
 				.title {
 					width: 100%;
 					height: 80rpx;
@@ -696,7 +515,7 @@
 					line-height: 80rpx;
 					margin-top: 80rpx;
 				}
-
+	
 				.title_desc {
 					width: 530rpx;
 					font-size: 24rpx;
@@ -708,7 +527,7 @@
 					margin-bottom: 80rpx;
 					margin-top: 36rpx;
 				}
-
+	
 				/deep/ .input {
 					.u-input__content__field-wrapper__field {
 						font-size: 28rpx !important;
@@ -717,17 +536,15 @@
 						color: #005652 !important;
 					}
 				}
-
-				.accountFocus,
+	
+				.phoneFocus,
 				.pwdFocus,
 				.cpwdFocus,
-				.inCodeFocus,
-				.emailFocus,
 				.mobileFocus,
 				.authCodeFocus {
 					border: 1px solid #FF5261 !important;
 				}
-
+	
 				.input {
 					width: 614rpx;
 					margin-bottom: 30rpx;
@@ -773,14 +590,14 @@
 						}
 					}
 				}
-
+	
 				/deep/ .placeholderClass {
 					font-size: 28rpx;
 					font-family: "PingFangSC-Regular";
 					font-weight: 400;
 					color: #bbbbbb;
 				}
-
+	
 				.save_forget {
 					width: 614rpx;
 					box-sizing: border-box;
@@ -803,7 +620,7 @@
 							color: #999999;
 							line-height: 34rpx;
 						}
-
+	
 						.save_icon {
 							width: 40rpx;
 							height: 40rpx;
@@ -813,7 +630,7 @@
 							box-sizing: border-box;
 							margin-right: 16rpx;
 						}
-
+	
 						.save_icon_active {
 							.save_icon;
 							background: #FF5261 url("../../static/image/userAuth/saveIcon.png") no-repeat center center;
@@ -822,12 +639,12 @@
 						}
 					}
 				}
-
+	
 				.disabledLogin {
 					width: 614rpx !important;
 					margin-top: 80rpx;
 					margin-bottom: 40rpx;
-
+	
 					/deep/.wyb-button {
 						box-sizing: border-box;
 						height: 90rpx;
@@ -843,12 +660,12 @@
 						box-sizing: border-box;
 					}
 				}
-
+	
 				.loginBtn {
 					width: 614rpx !important;
 					margin-top: 80rpx;
 					margin-bottom: 40rpx;
-
+	
 					/deep/.wyb-button {
 						box-sizing: border-box;
 						height: 90rpx;
