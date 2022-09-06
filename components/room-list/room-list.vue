@@ -1,22 +1,17 @@
 <template>
 	<view class="room-list">
-		<view class="item" v-for="item in TaskHallData">
+		<view class="item" v-for="(item,index) in TaskHallData">
 			<u--image :src="item.imgUrl" width="166rpx" height="166rpx" mode="widthFix"></u--image>
 			<view class="content">
 				<view class="name">{{item.levelName}}</view>
 				<view class="taskNum">Do daily tasks: {{item.orderNumber}}</view>
 				<view class="bottom">
 					<view class="score">
-						<u-rate 
-						activeColor="#F5CC5E"
-						inactiveColor="#E1E1E1"
-						:count="5" 
-						gutter="10rpx"
-						size="28rpx"
-						:allowHalf="true"
-						:readonly ='true'
-						v-model="value"
-						></u-rate>
+						<view :class="handlerStartShow(index)[0]?handlerStartShow(index)[0]+' xx':'xx'"></view>
+						<view :class="handlerStartShow(index)[1]?handlerStartShow(index)[1]+' xx':'xx'"></view>
+						<view :class="handlerStartShow(index)[2]?handlerStartShow(index)[2]+' xx':'xx'"></view>
+						<view :class="handlerStartShow(index)[3]?handlerStartShow(index)[3]+' xx':'xx'"></view>
+						<view :class="handlerStartShow(index)[4]?handlerStartShow(index)[4]+' xx':'xx'"></view>
 					</view>
 					<!-- 进入play -->
 					<view class="playBtn" v-if="handleIsenableClass(item)" @click="handleForestall(item)">
@@ -56,6 +51,37 @@
 			}
 		},
 		methods: {
+			/* 处理星星显示 */
+			handlerStartShow(index) {
+				switch (index) {
+					case 0:
+						return ['xxSelectAll', '', '', '', '']
+						break;
+					case 1:
+						return ['xxSelectAll', 'half', '', '', '']
+						break;
+					case 2:
+						return ['xxSelectAll', 'xxSelectAll', '', '', '']
+						break;
+					case 3:
+						return ['xxSelectAll', 'xxSelectAll', 'half', '', '']
+						break;
+					case 4:
+						return ['xxSelectAll', 'xxSelectAll', 'xxSelectAll', '', '']
+						break;
+					case 5:
+						return ['xxSelectAll', 'xxSelectAll', 'xxSelectAll', 'half', '']
+						break;
+					case 6:
+						return ['xxSelectAll', 'xxSelectAll', 'xxSelectAll', 'xxSelectAll', '']
+						break;
+					case 7:
+						return ['xxSelectAll', 'xxSelectAll', 'xxSelectAll', 'xxSelectAll', 'xxSelectAll']
+						break;
+					default:
+						break;
+				}
+			},
 			/* 处理按钮状态 */
 			//state=true && enable = true，已经开启房间
 			//state=false && enable = true 房间显示未开启可以去申请
@@ -223,10 +249,29 @@
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				.playBtn{
+				.score{
+					display: flex;
+					.xx{
+						width: 28rpx;
+						height: 28rpx;
+						background: url("../../static/image/index/xxUnselected.png") no-repeat center center;
+						background-size: 28rpx 28rpx;
+						margin-right: 10rpx;
+						&.xxSelectAll{
+							background: url("../../static/image/index/xx_all.png") no-repeat center center;
+							background-size: 28rpx 28rpx;
+						}
+						&.half{
+							background: url("../../static/image/index/half.png") no-repeat center center;
+							background-size: 28rpx 28rpx;
+						}
+					}
+					
+				}
+				.playBtn {
 					width: 170rpx;
 					height: 60rpx;
-					background: linear-gradient(308deg,#ff5261 10%, #ff8588 87%);
+					background: linear-gradient(308deg, #ff5261 10%, #ff8588 87%);
 					border-radius: 26rpx;
 					text-align: center;
 					line-height: 60rpx;
@@ -235,7 +280,8 @@
 					font-weight: 500;
 					color: #ffffff;
 				}
-				.ApplyBtn{
+
+				.ApplyBtn {
 					width: 210rpx;
 					height: 60rpx;
 					background: #e1e1e1;
@@ -247,7 +293,8 @@
 					font-weight: 500;
 					color: #999999;
 				}
-				.disableBtn{
+
+				.disableBtn {
 					width: 240rpx;
 					height: 60rpx;
 					background: #e1e1e1;

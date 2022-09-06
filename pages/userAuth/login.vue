@@ -266,6 +266,7 @@
 			this.isPhone = true;
 			this.statusBarHeight = statusBarObj.statusBarHeight + this.statusBarHeight;
 			//#endif
+			this.GetSiteData();
 
 		},
 		onReady() {
@@ -552,7 +553,6 @@
 				.registerBtn {
 					width: 614rpx !important;
 					margin: 40rpx;
-
 					/deep/.wyb-button {
 						height: 90rpx;
 						border: 1px solid #ff5261 !important;

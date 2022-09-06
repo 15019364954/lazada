@@ -19,7 +19,7 @@
 		src:url('@/static/font/PingFang-Light_0.ttf');
 	}
 	@font-face {
-		font-family: PingFangSC-Medium;
+		font-family: 'PingFangSC-Medium';
 		src:url('@/static/font/PingFang-Medium_0.ttf');
 		// font-weight: 700!important;
 	}
