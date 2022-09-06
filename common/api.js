@@ -117,17 +117,11 @@ export const Lottery = (params) => to(http.post('/api/Roulette/Lottery',params))
 
 export const GetPrizeDetailList = (params) => to(http.post('/api/Roulette/GetPrizeDetailList',params)); //获取抽奖明细记录
 
-export const ResetPasswordByEmailNoLogin = (params) => to(http.post('/api/Member/ResetPasswordByEmailNoLogin',params)); //通过邮箱重置密码未登录
+export const GetOrderReport = (params) =>  to(http.post('/api/Product/GetOrderReport', params));//获取抢单个人报告
 
-export const SendEmailAuthCode = (params) => to(http.post('/api/Member/SendEmailAuthCode',params)); //发送邮箱验证码
+export const GetValidityDate = (params) =>  to(http.post('/api/Product/GetValidityDate', params));//获取剩余天数时间
 
-export const ResetPasswordByEmail = (params) => to(http.post('/api/Member/ResetPasswordByEmail',params)); //重置密码
-
-export const BindEmail = (params) => to(http.post('/api/Member/BindEmail',params)); //绑定和修改邮箱
-
-export const VerifyEmailAuthCode = (params) => to(http.post('/api/Member/VerifyEmailAuthCode',params)); //验证邮箱验证码
-
-
+export const GetProductList = (params) =>  to(http.post('/api/Product/GetProductList', params));//获取商品列表
 
 
 

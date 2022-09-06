@@ -26,6 +26,7 @@
 				</view>
 			</view>
 		</view>
+		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
@@ -176,7 +177,7 @@
 				if (item.state && item.enable) {
 					this.$u.route({
 						type: 'navigateTo',
-						url: 'pages/forestall/forestall',
+						url: '/pages/newGrabSingle/newGrabSingle',
 						params: {
 							item: encodeURIComponent(params)
 						}

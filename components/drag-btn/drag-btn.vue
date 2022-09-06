@@ -29,6 +29,7 @@
 		top: 0;
 		position: fixed;
 		pointer-events: none;		//此处要加，鼠标事件可以渗透
+		z-index: 1000;
 		.movable-view {
 			width: $all_width;
 			height: $all_height;

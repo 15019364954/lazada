@@ -12,8 +12,8 @@
 	}
 </script>
 
-<style lang="less">
-	
+<style lang="scss">
+	@import "@/uni_modules/uview-ui/index.scss";
 	@font-face {
 		font-family: PingFangSC-Light;
 		src:url('@/static/font/PingFang-Light_0.ttf');

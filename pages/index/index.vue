@@ -119,6 +119,8 @@
 		</u-popup>
 
 		<drag-btn></drag-btn>
+		
+		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 

@@ -52,20 +52,23 @@
 					{{$t('apply.Tips')}}
 				</view>
 			</view>
-			
-			
+
+
 			<view class="btnBox">
 				<!-- 申请按钮 -->
-				<wyb-button class="btn" type="hollow" :ripple="true" @click="Apply" v-if="!item.remark">{{$t('apply.btnText')}}</wyb-button>
+				<wyb-button class="btn" type="hollow" :ripple="true" @click="Apply" v-if="!item.remark">
+					{{$t('apply.btnText')}}</wyb-button>
 				<view class="remark" v-if="item.remark"></view>
 			</view>
 		</view>
-
+		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
 <script>
-	import {RequestRoom} from '@/common/api.js';
+	import {
+		RequestRoom
+	} from '@/common/api.js';
 	export default {
 		data() {
 			return {
@@ -352,10 +355,10 @@
 				}
 			}
 		}
-		
+
 		/* tips */
-		.tips{
-			.title{
+		.tips {
+			.title {
 				height: 42rpx;
 				font-size: 30rpx;
 				font-family: "PingFangSC-Semibold";
@@ -364,7 +367,8 @@
 				color: #ffffff;
 				line-height: 42rpx;
 			}
-			.tipsText{
+
+			.tipsText {
 				font-size: 26rpx;
 				font-family: "PingFangSC-Regular";
 				font-weight: 400;
@@ -375,14 +379,17 @@
 				padding-bottom: 88rpx;
 			}
 		}
-		.btnBox{
+
+		.btnBox {
 			width: 100%;
 			display: flex;
 			justify-content: center;
 			padding-bottom: 100rpx;
 		}
+
 		.btn {
 			width: 100% !important;
+
 			/deep/.wyb-button {
 				height: 84rpx;
 				border: none !important;
@@ -394,10 +401,11 @@
 				font-weight: 700;
 				color: #fff !important;
 				box-sizing: border-box;
-				background: linear-gradient(304deg,#ff8588 8%, #ff5261 85%);
+				background: linear-gradient(304deg, #ff8588 8%, #ff5261 85%);
 			}
 		}
-		.remark{
+
+		.remark {
 			height: 84rpx;
 		}
 	}
