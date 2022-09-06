@@ -18,11 +18,11 @@
 						{{$t('task-hall.Enter')}}
 					</view>
 					<!-- 申请按钮 -->
-					<view class="ApplyBtn" @click="Apply(item)" v-if="!handleIsenableClass(item)&&!item.remark">
+					<view class="ApplyBtn" @click="Apply(item,index)" v-if="!handleIsenableClass(item)&&!item.remark">
 						{{$t('task-hall.Apply')}}
 					</view>
 					<!-- 暂未开启敬请期待 -->
-					<view class="disableBtn" v-if="item.remark" @click="Apply(item)">{{item&&ApplyContent(item)}}</view>
+					<view class="disableBtn" v-if="item.remark" @click="Apply(item,index)">{{item&&ApplyContent(item)}}</view>
 				</view>
 			</view>
 		</view>
@@ -185,7 +185,8 @@
 			},
 
 			/* 点击申请按钮 */
-			Apply(item) {
+			Apply(item,index) {
+				item = {indexKey: index,...item};
 				this.$u.route({
 					type: 'navigateTo',
 					url: 'pages/Apply/Apply',
