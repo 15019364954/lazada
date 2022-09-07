@@ -213,6 +213,7 @@
 		font-size: 32rpx;
 		color: #FE6067;
 		z-index: 1000;
+		box-sizing: border-box;
 		.back {
 			width: 100rpx;
 			height: 54rpx;

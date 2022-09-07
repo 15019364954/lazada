@@ -303,6 +303,14 @@
 			}
 			this.GetMyReportData();
 		},
+		onLoad() {
+			//获取系统刘海高度
+			//#ifdef APP-PLUS
+			let statusBarObj = this.getPhoneInfo();
+			this.isPhone = true;
+			this.statusBarHeight = statusBarObj.statusBarHeight + this.statusBarHeight;
+			//#endif
+		},
 	}
 </script>
 <style>
@@ -326,11 +334,9 @@
 		z-index: 1000;
 		padding: 0 34rpx;
 		box-sizing: border-box;
-
 		.item {
 			display: flex;
 			align-items: center;
-
 			.userId {
 				margin-left: 24rpx;
 				font-size: 36rpx;

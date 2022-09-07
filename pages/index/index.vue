@@ -1,6 +1,6 @@
 <template>
 	<view class="homePage">
-		<view class="header">
+		<view class="header" :style="{height: statusBarHeight+'px',paddingTop: statusBarHeight-60+'px'}">
 			<view class="left">
 				<view class="text">
 					<view class="title">Logo App</view>
@@ -135,7 +135,7 @@
 		data() {
 			return {
 				isPhone: false,
-				statusBarHeight: 50, //刘海默认高度
+				statusBarHeight: 60, //刘海默认高度
 				swrapList: [], //轮播图数据
 				background: ['color1', 'color2', 'color3'],
 				indicatorDots: false,
@@ -276,7 +276,15 @@
 			this.GetDLevelRuleList();
 			/* 获取公告内容 */
 			this.GetNoticeList();
-		}
+		},
+		onPullDownRefresh() {//下拉刷新时调用
+			/* 获取优惠活动列表 */
+			this.GetPromotionList();
+			/* 获取佣金大厅列表 */
+			this.GetDLevelRuleList();
+			/* 获取公告内容 */
+			this.GetNoticeList();
+		},
 	}
 </script>
 
@@ -302,7 +310,6 @@
 		width: 100%;
 		box-sizing: border-box;
 		box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.10);
-
 		.logo {
 			width: 170rpx;
 			height: 56rpx;
@@ -354,11 +361,14 @@
 			padding: 24rpx;
 			width: 100%;
 			box-sizing: border-box;
+			background-color: #f7f7f7;
 		}
 
 		.openRoom {
 			padding: 0 24rpx;
-
+			width: 100%;
+			box-sizing: border-box;
+			background-color: #f7f7f7;
 			.content {
 				width: 100%;
 				background-color: #ffffff;
@@ -366,7 +376,6 @@
 				min-height: 200rpx;
 				padding: 26rpx 28rpx;
 				box-sizing: border-box;
-
 				.top {
 					display: flex;
 					align-items: center;
@@ -393,7 +402,8 @@
 
 		/* 滚动商品 */
 		.goods-parent {
-			margin: 24rpx 0;
+			padding: 24rpx 0;
+			background-color: #f7f7f7;
 		}
 
 		/* 分割线 */

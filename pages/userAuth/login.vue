@@ -83,6 +83,7 @@
 	export default {
 		data() {
 			return {
+				isPhone: false,
 				statusBarHeight: 50, //刘海默认高度
 				userIDFocus: "input",
 				pwdFocus: "input passwordInput",
@@ -356,20 +357,19 @@
 			font-weight: 500;
 			text-align: right;
 			color: #ff5261;
+			box-sizing: border-box;
 		}
 
 		.container {
 			width: 100%;
 			box-sizing: border-box;
 			padding: 0 24rpx;
-
 			.form {
 				background-color: #fff;
 				height: max-content;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-
 				.settingLanguage {
 					width: auto;
 					height: 40rpx;

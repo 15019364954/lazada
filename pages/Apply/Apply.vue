@@ -222,12 +222,20 @@
 		}
 	}
 </script>
-
-<style lang="less" scoped>
-	.Apply {
+<style>
+	page {
 		width: 100%;
+		min-height: 100%;
 		background: url("../../static/image/apply/applyBg.png")no-repeat center center;
-		background-size: 100% 100%;
+		background-size: cover;
+	}
+</style>
+<style lang="less" scoped>
+	page {
+		width: 100%;
+		min-height: 100%;
+		background: url("../../static/image/apply/applyBg.png")no-repeat center center;
+		background-size: cover;
 	}
 
 	.header {
@@ -241,6 +249,7 @@
 		background-color: transparent;
 		font-size: 32rpx;
 		color: #ffffff;
+		box-sizing: border-box;
 
 		.back {
 			width: 100rpx;

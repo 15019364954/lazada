@@ -13,7 +13,10 @@
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": true,
-				"navigationStyle": "custom"
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none"
+				}
 			}
 		}, {
 			"path": "pages/userAuth/registerUser",
