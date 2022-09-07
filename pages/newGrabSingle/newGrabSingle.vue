@@ -51,7 +51,7 @@
 			</view>
 			
 			<!-- 订单列表 -->
-			<orderList :orderList="orderList"></orderList>
+			<orderList :orderList="orderList" :lid="this.options.lid"></orderList>
 		</view>
 		<u-toast ref="uToast"></u-toast>
 		<drag-btn></drag-btn>

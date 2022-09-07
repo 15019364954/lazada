@@ -1,14 +1,6 @@
 <template>
 	<view class="lazadaMall">
-		<view class="lazadaMall-bg" v-if="!show">背景</view>
-		<view class="detail" v-if="show">
-			<!-- 头部导航 -->
-			<view class="header" :style="{height: statusBarHeight+'px',paddingTop: statusBarHeight-50+'px'}">
-				<!-- 客服 -->
-				<u-icon name="arrow-left" size="40rpx" color="#FE6067" @click="goBack" class="back"></u-icon>
-				Grab a Single
-			</view>
-		</view>
+		<view class="lazadaMall-bg"></view>
 	</view>
 </template>
 
@@ -24,16 +16,6 @@
 		methods: {
 			
 		},
-		onShow() {
-			if(!this.show) {
-				let _that = this;
-				uni.showLoading();
-				this.Time = setTimeout(() => {
-					uni.hideLoading();
-					_that.show = true;
-				},2000)
-			}
-		},
 		onLoad(options) {
 			//获取系统刘海高度
 			//#ifdef APP-PLUS
@@ -41,6 +23,14 @@
 			this.isPhone = true;
 			this.statusBarHeight = statusBarObj.statusBarHeight + this.statusBarHeight;
 			//#endif
+			uni.showLoading();
+			this.Time = setTimeout(() => {
+				uni.hideLoading();
+				this.$u.route({
+					type:'redirectTo',
+					url: `/pages/lazada-mall-detail/lazada-mall-detail?item=${options.item}`
+				})
+			},2000)
 		},
 	}
 </script>

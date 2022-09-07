@@ -29,6 +29,12 @@
 				default: () => {
 					return null;
 				}
+			},
+			lid: {
+				type: String||null,
+				default: () => {
+					return null
+				}
 			}
 		},
 		data() {
@@ -90,7 +96,8 @@
 				//发送请求获取订单信息
 				const params = {
 					pageSize: 100,
-					// lid: this.options.lid,
+					lid: this.lid,
+					pid: item.pid,
 					userID: uni.getStorageSync('userInfo').userID
 				}
 				uni.showLoading();
@@ -106,15 +113,13 @@
 					return;
 				}
 				if (res.data.resultCode === 1) {
-					//设置订单信息
-					this.orderInfo = res.data.resultData;
 					//跳转到商城页面
-
-				} else {
+					let data = JSON.stringify(res.data.resultData);
 					this.$u.route({
 						type: 'navigateTo',
-						url: '/pages/lazada-mall/lazada-mall',
+						url: `/pages/lazada-mall/lazada-mall?item=${encodeURIComponent(data)}`,
 					})
+				} else {
 					this.$refs.uToast.show({
 						message: this.$t("config.resultCode" + res.data.resultCode),
 						type: 'error',
