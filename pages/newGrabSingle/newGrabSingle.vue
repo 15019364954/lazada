@@ -51,7 +51,7 @@
 			</view>
 			
 			<!-- 订单列表 -->
-			<orderList :orderList="orderList" :lid="this.options.lid"></orderList>
+			<orderList :orderList="orderList" :lid="this.options.lid" v-if="orderListShow"></orderList>
 		</view>
 		<u-toast ref="uToast"></u-toast>
 		<drag-btn></drag-btn>
@@ -76,6 +76,7 @@
 				active: '',
 				current: 0,
 				orderList: null,
+				orderListShow: true
 			}
 		},
 		computed: {
@@ -181,10 +182,14 @@
 		},
 		onShow() {
 			if (!this.$u.utils.Permissions()) return;
+			this.orderListShow = true;
 			this.isStart = false;
 			this._GetMyReport();
 			this._GetProductList();
 		},
+		onHide() {
+			this.orderListShow = false;
+		}
 	}
 </script>
 <style>

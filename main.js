@@ -39,7 +39,7 @@ Vue.filter("fmtMoney",(num)=>{
 
 
 Vue.prototype.$store = store
-Vue.prototype.domain = 'https://zalando-api.com/';
+Vue.prototype.domain = 'http://767518.com/';
 
 import uView from '@/uni_modules/uview-ui'
 Vue.use(uView)

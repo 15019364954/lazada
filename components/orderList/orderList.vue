@@ -35,7 +35,7 @@
 				default: () => {
 					return null
 				}
-			}
+			},
 		},
 		data() {
 			return {
@@ -51,7 +51,7 @@
 					let _this = this;
 					_this.$nextTick(() => {
 						_this.Timer = setInterval(() => {
-							console.log(11111111111);
+							console.log(1111);
 							//获取当前显示数据的最大的id值，截取数据源中的数据添加进去
 							let copyData = [..._this.dataList].sort((a, b) => {
 								return a._id - b._id;
