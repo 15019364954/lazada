@@ -354,7 +354,7 @@
 					this.$refs.uToast.show({
 						message: "Please click OTP to get SMS verification code",
 						type: '',
-						position: "bottom",
+						position: "top",
 						duration: 2000,
 					})
 				} else {
@@ -645,9 +645,10 @@
 			align-items: center;
 			font-size: 32rpx;
 			font-family: "PingFangSC-Medium";
-			font-weight: 500;
+			// font-weight: 500;
 			text-align: right;
 			color: #ff5261;
+			box-sizing: border-box;
 
 			.back {
 				width: 100rpx;
@@ -676,7 +677,7 @@
 					height: 40rpx;
 					font-size: 28rpx;
 					font-family: "PingFangSC-Regular";
-					font-weight: 400;
+					// font-weight: 400;
 					text-align: center;
 					color: #ff5261;
 					line-height: 40rpx;
@@ -690,7 +691,7 @@
 					height: 80rpx;
 					font-size: 48rpx;
 					font-family: "PingFangSC-Medium";
-					font-weight: 400;
+					// font-weight: 400;
 					text-align: center;
 					color: #333333;
 					line-height: 80rpx;
@@ -701,7 +702,7 @@
 					width: 530rpx;
 					font-size: 24rpx;
 					font-family: "PingFangSC-Regular";
-					font-weight: 400;
+					// font-weight: 400;
 					text-align: center;
 					color: #999999;
 					line-height: 24rpx;
@@ -713,7 +714,7 @@
 					.u-input__content__field-wrapper__field {
 						font-size: 28rpx !important;
 						font-family: "PingFangSC-Medium";
-						font-weight: 500;
+						// font-weight: 500;
 						color: #005652 !important;
 					}
 				}
@@ -745,12 +746,12 @@
 						height: 38rpx;
 						font-size: 32rpx;
 						font-family: "Helvetica";
-						font-weight: 400;
+						// font-weight: 400;
 						color: #cccccc;
 						line-height: 38rpx;
 						&.active{
 							font-family: "PingFangSC-Medium";
-							font-weight: 500;
+							// font-weight: 500;
 							color: #ff5261;
 						}
 					}
@@ -765,11 +766,15 @@
 							height: 40rpx;
 							font-size: 28rpx;
 							font-family: "PingFangSC-Regular";
-							font-weight: 400;
+							// font-weight: 400;
 							color: #005652;
 							line-height: 40rpx;
 							display: inline-block;
 							margin-right: 12rpx !important;
+							&/deep/ .u-text__value{
+								font-size: 30rpx!important;
+								font-weight: 700!important;
+							}
 						}
 					}
 				}
@@ -777,7 +782,7 @@
 				/deep/ .placeholderClass {
 					font-size: 28rpx;
 					font-family: "PingFangSC-Regular";
-					font-weight: 400;
+					// font-weight: 400;
 					color: #bbbbbb;
 				}
 
@@ -799,7 +804,7 @@
 							height: 34rpx;
 							font-size: 24rpx;
 							font-family: "PingFangSC-Regular";
-							font-weight: 400;
+							// font-weight: 400;
 							color: #999999;
 							line-height: 34rpx;
 						}
@@ -837,7 +842,7 @@
 						background-color: #CCCCCC !important;
 						font-size: 32rpx;
 						font-family: "PingFangSC-Medium";
-						font-weight: 500;
+						// font-weight: 500;
 						color: #ffffff !important;
 						border: none !important;
 						box-sizing: border-box;
@@ -858,7 +863,7 @@
 						background: linear-gradient(308deg, #ff5261 10%, #ff8588 87%) !important;
 						font-size: 32rpx;
 						font-family: "PingFangSC-Medium";
-						font-weight: 500;
+						// font-weight: 500;
 						color: #ffffff !important;
 						border: none !important;
 						box-sizing: border-box;

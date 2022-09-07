@@ -131,7 +131,6 @@
 		methods: {
 			/* 退出登录 */
 			async Logout() {
-				return;
 				uni.$u.vuex('vuex_token', '');
 				uni.setStorageSync('userInfo', '');
 				uni.setStorageSync('isPopup', false);
@@ -323,7 +322,7 @@
 		width: 100%;
 		position: fixed;
 		font-family: "PingFangSC-Medium";
-		font-weight: 500;
+		// font-weight: 500;
 		top: 0;
 		left: 0;
 		display: flex;
@@ -341,7 +340,7 @@
 				margin-left: 24rpx;
 				font-size: 36rpx;
 				font-family: "PingFangSC-Medium";
-				font-weight: 500;
+				// font-weight: 500;
 				text-align: left;
 				color: #fe6067;
 			}
@@ -375,7 +374,7 @@
 					height: 40rpx;
 					font-size: 28rpx;
 					font-family: "PingFangSC-Regular";
-					font-weight: 400;
+					// font-weight: 400;
 					text-align: left;
 					color: #999999;
 					line-height: 40rpx;
@@ -385,7 +384,7 @@
 					height: 40rpx;
 					font-size: 28rpx;
 					font-family: "PingFangSC-Medium";
-					font-weight: 500;
+					// font-weight: 500;
 					text-align: right;
 					color: #fe6067;
 					line-height: 40rpx;
@@ -395,7 +394,7 @@
 					height: 44rpx;
 					font-size: 44rpx;
 					font-family: "Helvetica";
-					font-weight: 400;
+					// font-weight: 400;
 					text-align: left;
 					color: #ffaa03;
 					line-height: 44rpx;
@@ -416,7 +415,7 @@
 					text-align: center;
 					font-size: 28rpx;
 					font-family: "PingFangSC-Medium";
-					font-weight: 500;
+					// font-weight: 500;
 					color: #ffffff;
 
 					&.Transfer {
@@ -445,7 +444,7 @@
 						height: 24rpx;
 						font-size: 24rpx;
 						font-family: "PingFangSC-Regular";
-						font-weight: 400;
+						// font-weight: 400;
 						color: #005652;
 						line-height: 24rpx;
 
@@ -463,7 +462,7 @@
 						height: 24rpx;
 						font-size: 28rpx;
 						font-family: "Helvetica";
-						font-weight: 400;
+						// font-weight: 400;
 						text-align: left;
 						color: #ffaa03;
 						margin-top: 16rpx;
@@ -520,7 +519,7 @@
 					height: 40rpx;
 					font-size: 28rpx;
 					font-family: "PingFangSC-Medium";
-					font-weight: 500;
+					// font-weight: 500;
 					text-align: left;
 					color: #005652;
 					line-height: 40rpx;
@@ -534,7 +533,7 @@
 		width: 100%;
 		padding: 0 24rpx;
 		padding-top: 48rpx;
-		padding-bottom: 100rpx;
+		padding-bottom: 48rpx;
 		box-sizing: border-box;
 		.logOutBtn {
 			width: 100% !important;
@@ -545,13 +544,13 @@
 				border-radius: 46rpx!important;
 				line-height: 86rpx;
 				text-align: center;
-				font-weight: 700;
+				// font-weight: 700;
 				color: #fff !important;
 				box-sizing: border-box;
 				border: none!important;
 				font-size: 34rpx;
 				font-family: "Helvetica";
-				font-weight: 400;
+				// font-weight: 400;
 			}
 		}
 	}

@@ -53,4 +53,13 @@
 		font-family: "PingFangSC-Regular";
 		font-weight: 700;
 	}
+	.uni-page-refresh--refreshing{
+			z-index:99999999999999999!important;
+	}
+	html{
+		font-weight: 700!important;
+	}
+	page{
+		background-color: #f7f7f7;
+	}
 </style>

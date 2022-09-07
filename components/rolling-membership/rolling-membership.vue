@@ -132,7 +132,7 @@
 					height: 24rpx;
 					font-size: 24rpx;
 					font-family: "PingFangSC-Medium";
-					font-weight: 500;
+					// font-weight: 500;
 					color: #333333;
 					text-align: left;
 					line-height: 24rpx;
@@ -141,7 +141,7 @@
 					height: 20rpx;
 					font-size: 20rpx;
 					font-family: "PingFangSC-Regular";
-					font-weight: 400;
+					// font-weight: 400;
 					color: #666666;
 					line-height: 20rpx;
 					margin-top: 8rpx;
@@ -153,7 +153,7 @@
 			height: 34rpx;
 			font-size: 24rpx;
 			font-family: "PingFangSC-Medium";
-			font-weight: 500;
+			// font-weight: 500;
 			text-align: left;
 			color: #fe6067;
 			line-height: 34rpx;

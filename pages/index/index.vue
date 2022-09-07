@@ -82,22 +82,34 @@
 					<view class="item">
 						<u--image src="../../static/image/index/message_classIcon1.png" width="40rpx" height="40rpx"
 							mode="widthFix"></u--image>
-						<view class="text">1. Choose a grouping group and click “Profit”</view>
+						<view class="text">
+							<view>
+								4. Choose a grouping group and click “Profit”
+							</view>
+						</view>
 					</view>
 					<view class="item">
 						<u--image src="../../static/image/index/message_classIcon2.png" width="40rpx" height="40rpx"
 							mode="widthFix"></u--image>
-						<view class="text">2. Choose a grouping group and click “Profit”</view>
+						<view class="text"><view>
+								4. Choose a grouping group and click “Profit”
+							</view></view>
 					</view>
 					<view class="item">
 						<u--image src="../../static/image/index/message_classIcon3.png" width="40rpx" height="40rpx"
 							mode="widthFix"></u--image>
-						<view class="text">3. Choose a grouping group and click “Profit”</view>
+						<view class="text"><view>
+								4. Choose a grouping group and click “Profit”
+							</view></view>
 					</view>
 					<view class="item">
 						<u--image src="../../static/image/index/message_classIcon4.png" width="40rpx" height="40rpx"
 							mode="widthFix"></u--image>
-						<view class="text">4. Choose a grouping group and click “Profit”</view>
+						<view class="text">
+							<view>
+								4. Choose a grouping group and click “Profit”
+							</view>
+						</view>
 					</view>
 				</view>
 			</view>
@@ -105,7 +117,7 @@
 
 		<!-- 弹窗公告 -->
 		<u-popup :show="PoupShow" @close="close" bgColor="transparent" class="popUpAnnouncement" mode="center"
-			:mask-close-able="false" :closeable="false">
+			:mask-close-able="false" :closeable="false" @touchmove.stop.prevent="true">
 			<view class="content">
 				<view class="title">
 					Information
@@ -328,7 +340,7 @@
 				.title {
 					font-size: 20rpx;
 					font-family: "PingFangSC-Regular";
-					font-weight: 400;
+					// font-weight: 400;
 					color: #666;
 					line-height: 24rpx;
 					margin-bottom: 16rpx;
@@ -392,7 +404,7 @@
 						height: 40rpx;
 						font-size: 28rpx;
 						font-family: "PingFangSC-Medium";
-						font-weight: 500;
+						// font-weight: 500;
 						color: #333333;
 						line-height: 40rpx;
 					}
@@ -432,7 +444,7 @@
 				background-color: #F7F7F7;
 				font-size: 24rpx;
 				font-family: 'PingFangSC-Regular';
-				font-weight: 400;
+				// font-weight: 400;
 				text-align: center;
 				color: #999999;
 			}
@@ -465,7 +477,7 @@
 				height: 52rpx;
 				font-size: 38rpx;
 				font-family: "PingFangSC-Medium";
-				font-weight: 500;
+				// font-weight: 500;
 				text-align: left;
 				color: #fe6067;
 				line-height: 52rpx;
@@ -491,7 +503,7 @@
 						height: 40rpx;
 						font-size: 28rpx;
 						font-family: "PingFangSC-Regular";
-						font-weight: 400;
+						// font-weight: 400;
 						text-align: left;
 						color: #fe6067;
 						line-height: 40rpx;
@@ -509,7 +521,7 @@
 
 						font-size: 28rpx;
 						font-family: "PingFangSC-Regular";
-						font-weight: 400;
+						// font-weight: 400;
 						text-align: left;
 						color: #bbbbbb;
 						line-height: 38rpx;
@@ -532,7 +544,7 @@
 					height: 52rpx;
 					font-size: 38rpx;
 					font-family: "PingFangSC-Semibold";
-					font-weight: 600;
+					// font-weight: 600;
 					text-align: left;
 					color: #fe6067;
 					line-height: 52rpx;
@@ -547,10 +559,11 @@
 						height: 80rpx;
 						font-size: 28rpx;
 						font-family: "PingFangSC-Regular";
-						font-weight: 400;
+						// font-weight: 400;
 						text-align: left;
 						color: #666666;
-						line-height: 80rpx;
+						display: flex;
+						align-items: center;
 					}
 				}
 			}
@@ -574,7 +587,7 @@
 				height: 44rpx;
 				font-size: 32rpx;
 				font-family: "PingFangSC-Medium";
-				font-weight: 700;
+				// font-weight: 700;
 				text-align: center;
 				color: #025551;
 				line-height: 44rpx;
@@ -590,7 +603,7 @@
 				width: 530rpx;
 				font-size: 46rpx;
 				font-family: "PingFangSC-Semibold";
-				font-weight: 600;
+				// font-weight: 600;
 				text-align: left;
 				color: #333333;
 				line-height: 56rpx;
@@ -605,7 +618,7 @@
 					text-align: center;
 					font-size: 26rpx;
 					font-family: "PingFangSC-Medium";
-					font-weight: 700;
+					// font-weight: 700;
 					color: #fff !important;
 					box-sizing: border-box;
 					background: linear-gradient(304deg,#ff8588 8%, #ff5261 85%);

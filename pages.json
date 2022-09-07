@@ -48,7 +48,8 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": false,
+				"navigationStyle": "custom"
             }
             
         }
@@ -104,6 +105,16 @@
         }
         ,{
             "path" : "pages/lazada-mall-detail/lazada-mall-detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+            }
+            
+        }
+        ,{
+            "path" : "pages/Online/Online",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",

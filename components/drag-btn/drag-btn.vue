@@ -2,7 +2,7 @@
 	<view>
 		<movable-area class="movable-area">
 			<movable-view class="movable-view" :x="x" :y="y" direction="all">
-				<image src="../../static/serviceIcon.png"></image>
+				<image src="../../static/serviceIcon.png" @click="Online"></image>
 			</movable-view>
 		</movable-area>
 	</view>
@@ -14,6 +14,13 @@
 			return {
 				x: 320,		//x坐标
 				y: 400,		//y坐标
+			}
+		},
+		methods: {
+			Online() {
+				uni.navigateTo({
+					url:"/pages/Online/Online"
+				})
 			}
 		}
 	}

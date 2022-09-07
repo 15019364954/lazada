@@ -202,7 +202,7 @@
 		width: 100%;
 		position: fixed;
 		font-family: "PingFangSC-Medium";
-		font-weight: 500;
+		// font-weight: 500;
 		top: 0;
 		left: 0;
 		display: flex;
@@ -263,7 +263,7 @@
 						background-size: 388rpx 68rpx;
 						font-size: 28rpx;
 						font-family: 'PingFangSC-Medium';
-						font-weight: 500;
+						// font-weight: 500;
 						text-align: center;
 						color: #ffffff;
 						line-height: 68rpx;
@@ -310,7 +310,7 @@
 
 							&.active {
 								font-size: 32rpx;
-								font-weight: 500;
+								// font-weight: 500;
 								padding: 0;
 								border: 1px solid #fe6067;
 								background: #f7e8e987;
@@ -318,7 +318,7 @@
 								.money {
 									font-size: 24rpx;
 									font-family: "PingFangSC-Semibold";
-									font-weight: 600;
+									// font-weight: 600;
 									text-align: left;
 									color: #fe6067;
 								}
@@ -326,7 +326,7 @@
 								.title {
 									font-size: 26rpx;
 									font-family: "PingFangSC-Regular";
-									font-weight: 400;
+									// font-weight: 400;
 									text-align: center;
 									color: #fe6067;
 								}
@@ -335,7 +335,7 @@
 							.title {
 								font-size: 26rpx;
 								font-family: "PingFangSC-Regular";
-								font-weight: 400;
+								// font-weight: 400;
 								text-align: center;
 								color: #444444;
 							}
@@ -343,7 +343,7 @@
 							.money {
 								font-size: 24rpx;
 								font-family: "PingFangSC-Semibold";
-								font-weight: 600;
+								// font-weight: 600;
 								text-align: center;
 								color: #333333;
 							}
@@ -368,7 +368,7 @@
 				height: 36rpx;
 				font-size: 26rpx;
 				font-family: 'PingFangSC-Medium';
-				font-weight: 500;
+				// font-weight: 500;
 				text-align: left;
 				color: #444444;
 				line-height: 36rpx;
@@ -378,7 +378,7 @@
 				margin: 20rpx 0;
 				font-size: 22rpx;
 				font-family: "PingFangSC-Regular";
-				font-weight: 400;
+				// font-weight: 400;
 				text-align: left;
 				color: #999999;
 				line-height: 32rpx;

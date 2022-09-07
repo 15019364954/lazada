@@ -244,7 +244,7 @@
 		justify-content: center;
 		align-items: center;
 		font-family: "PingFangSC-Medium";
-		font-weight: 500;
+		// font-weight: 500;
 		text-align: right;
 		background-color: transparent;
 		font-size: 32rpx;
@@ -269,7 +269,7 @@
 			height: 64rpx;
 			font-size: 46rpx;
 			font-family: "PingFangSC-Semibold";
-			font-weight: 600;
+			// font-weight: 600;
 			text-align: left;
 			color: #ffffff;
 			line-height: 64rpx;
@@ -292,7 +292,7 @@
 				height: 48rpx;
 				font-size: 44rpx;
 				font-family: "D-Bold";
-				font-weight: 700;
+				// font-weight: 700;
 				text-align: left;
 				color: #f5cc5e;
 				line-height: 48rpx;
@@ -306,7 +306,7 @@
 				height: 42rpx;
 				font-size: 30rpx;
 				font-family: "PingFangSC-Semibold";
-				font-weight: 600;
+				// font-weight: 600;
 				text-align: left;
 				color: #ffffff;
 				line-height: 42rpx;
@@ -346,7 +346,7 @@
 				.title {
 					height: 42rpx;
 					font-size: 30rpx;
-					font-weight: 600;
+					// font-weight: 600;
 					font-family: "PingFangSC-Semibold";
 					text-align: left;
 					color: #ffffff;
@@ -357,7 +357,7 @@
 					height: 34rpx;
 					font-size: 30rpx;
 					font-family: "D-Bold";
-					font-weight: 700;
+					// font-weight: 700;
 					text-align: right;
 					color: #f5cc5e;
 					line-height: 34rpx;
@@ -371,7 +371,7 @@
 				height: 42rpx;
 				font-size: 30rpx;
 				font-family: "PingFangSC-Semibold";
-				font-weight: 600;
+				// font-weight: 600;
 				text-align: left;
 				color: #ffffff;
 				line-height: 42rpx;
@@ -380,7 +380,7 @@
 			.tipsText {
 				font-size: 26rpx;
 				font-family: "PingFangSC-Regular";
-				font-weight: 400;
+				// font-weight: 400;
 				text-align: left;
 				color: #ffffff;
 				line-height: 36rpx;
@@ -407,7 +407,7 @@
 				text-align: center;
 				font-size: 26rpx;
 				font-family: "PingFangSC-Medium";
-				font-weight: 700;
+				// font-weight: 700;
 				color: #fff !important;
 				box-sizing: border-box;
 				background: linear-gradient(304deg, #ff8588 8%, #ff5261 85%);
