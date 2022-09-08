@@ -123,6 +123,16 @@
             }
             
         }
+        ,{
+            "path" : "pages/teamReports-record/teamReports-record",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

@@ -20,13 +20,13 @@
 	}
 	@font-face {
 		font-family: PingFangSC-Medium;
-		src:url('@/static/font/PingFang-Medium_0.ttf');
+		src:url('@/static/font/PingFang-Medium_0.ttf') format('truetype');
 	}
 	@font-face {
 		font-family: PingFangSC-Regular;
-		src:url('@/static/font/PingFang-Regular_0.otf') format('otf'),
-		url('@/static/font/PingFang-Regular_0.woff') format('woff'),
-		url('@/static/font/PingFang-Regular_0.ttf') format('truetype');
+		// src:url('@/static/font/PingFang-Regular_0.otf') format('otf'),
+		// url('@/static/font/PingFang-Regular_0.woff') format('woff'),
+		src: url('@/static/font/PingFang-Regular_0.ttf') format('truetype');
 	}
 	@font-face {
 		font-family: PingFangSC-Semibold;
@@ -58,6 +58,7 @@
 	}
 	html{
 		font-weight: 700!important;
+		font-family: sans-serif;
 	}
 	page{
 		background-color: #f7f7f7;

@@ -235,6 +235,7 @@
 				text-align: left;
 				color: #333333;
 				line-height: 40rpx;
+				letter-spacing: 0rpx;
 			}
 
 			.taskNum {
