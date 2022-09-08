@@ -166,7 +166,7 @@
 			this.isPhone = true;
 			this.statusBarHeight = statusBarObj.statusBarHeight + this.statusBarHeight;
 			//#endif
-			this.type = this.options.type;
+			this.type = options.type;
 		},
 		onShow() {
 			if (!this.$u.utils.Permissions()) return;

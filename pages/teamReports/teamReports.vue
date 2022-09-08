@@ -3,8 +3,12 @@
 		<view class="header" :style="{height: statusBarHeight+'px',paddingTop: statusBarHeight-50+'px'}">
 			{{$t('teamReport.title')}}
 		</view>
-		<view class="" :style="{paddingTop: isPhone?statusBarHeight+'px':50+'px'}"></view>
-
+		<view class="tabs" :style="{top: statusBarHeight+'px'}">
+			<v-tabs height="40px" v-model="current" :tabs="list()" :scroll="false" @change="Tabchage" color="#A6C4C3"
+				activeColor="#FE6067" lineColor="#FE6067" lineRadius="24rpx">
+			</v-tabs>
+		</view>
+		<view class="" :style="{paddingTop: isPhone?statusBarHeight+40+'px':50+40+'px'}"></view>
 		<view class="container">
 			<!-- 分享信息 -->
 			<view class="shareMessage">
@@ -12,7 +16,7 @@
 				<view class="invCode">
 					<view class="title">{{$t('account.InvitationCode')}}</view>
 					<view class="code_copy">
-						<view class="code">{{MyReport.invitationCode}}</view>
+						<view class="code">{{MyReport&&MyReport.invitationCode}}</view>
 						<view class="copy">Copy</view>
 					</view>
 				</view>
@@ -67,7 +71,7 @@
 					<view class="icon"></view>
 					<view class="title">{{$t('teamReport.MyTeam')}}</view>
 				</view>
-				
+
 				<!-- 团队人数 -->
 				<view class="messageModul_content">
 					<view class="top">
@@ -97,79 +101,53 @@
 						View Records
 					</view> -->
 				</view>
-				
+
 				<!-- 推荐奖励 -->
 				<view class="messageModul_title">
 					<view class="icon"></view>
-					<view class="title">{{$t('teamReport.ReferralBonus')}}</view>
+					<view class="title">{{$t('teamReport.EarningDetails')}}</view>
 				</view>
-				<view class="messageModul_content">
+				<view class="EarningDetails">
 					<view class="top">
 						<view class="item">
-							<view class="item_text left">Today's commission</view>
-							<view class="item_value">10</view>
+							<view class="left">
+								<view class="item_value">${{teamData&&teamData.referralreward|fmtMoney}}</view>
+								<view class="item_text">
+									<view>
+										{{$t('teamReport.ReferralBonus')}}
+									</view>
+								</view>
+							</view>
+							<view class="viewRecord" @click="goDetail(1)">
+								View Records
+							</view>
 						</view>
 						<view class="item">
-							<view class="item_text center">Today's commission</view>
-							<view class="item_value center">10</view>
+							<view class="left">
+								<view class="item_value">${{teamData&&teamData.totalOrderCommission|fmtMoney}}</view>
+								<view class="item_text">
+									<view>
+										{{$t('teamReport.TaskEarnings')}}
+									</view>
+								</view>
+							</view>
+							<view class="viewRecord" @click="goDetail(2)">
+								View Records
+							</view>
 						</view>
 						<view class="item">
-							<view class="item_text right">Today's commission</view>
-							<view class="item_value right">10</view>
+							<view class="left">
+								<view class="item_value">${{teamData&&teamData.totalTeamCommission|fmtMoney}}</view>
+								<view class="item_text">
+									<view>
+										{{$t('teamReport.TeamEarnings')}}
+									</view>
+								</view>
+							</view>
+							<view class="viewRecord" @click="goDetail(3)">
+								View Records
+							</view>
 						</view>
-					</view>
-					<view class="viewRecord" @click="goDetail(1)">
-						View Records
-					</view>
-				</view>
-				
-				<!-- 刷单佣金 -->
-				<view class="messageModul_title">
-					<view class="icon"></view>
-					<view class="title">{{$t('teamReport.TaskCommission')}}</view>
-				</view>
-				<view class="messageModul_content">
-					<view class="top">
-						<view class="item">
-							<view class="item_text left">Today's commission</view>
-							<view class="item_value">10</view>
-						</view>
-						<view class="item">
-							<view class="item_text center">Today's commission</view>
-							<view class="item_value center">10</view>
-						</view>
-						<view class="item">
-							<view class="item_text right">Today's commission</view>
-							<view class="item_value right">10</view>
-						</view>
-					</view>
-					<view class="viewRecord" @click="goDetail(2)">
-						View Records
-					</view>
-				</view>
-				
-				<!-- 团队佣金 -->
-				<view class="messageModul_title">
-					<view class="icon"></view>
-					<view class="title">{{$t('teamReport.TeamCommission')}}</view>
-				</view>
-				<view class="messageModul_content">
-					<view class="top">
-						<view class="item">
-							<view class="item_text left">Today's commission</view>
-							<view class="item_value">10</view>
-						</view>
-						<view class="item">
-							<view class="item_text center">Today's commission</view>
-							<view class="item_value center">10</view>
-						</view>
-						<view class="item">
-							<view class="item_text right">Today's commission</view>
-							<view class="item_value right">10</view>
-						</view>
-					</view>
-					<view class="viewRecord" @click="goDetail(3)">
-						View Records
 					</view>
 				</view>
 			</view>
@@ -193,9 +171,37 @@
 				statusBarHeight: 50, //刘海默认高度
 				teamData: null, //团队报告数据
 				MyReport: null,
+				current: 0, //当前选中的选项卡
+
 			}
 		},
 		methods: {
+			list() {
+				let list = [
+					this.$t('teamReport.Yearly'),
+					this.$t('teamReport.Monthly'),
+					this.$t('teamReport.Weekly'),
+				];
+				return list;
+			},
+			// 列表切换
+			Tabchage(item) {
+				let index = item
+				this.current = index;
+				/* 根据条件设置时间发送请求 */
+				if (index == 0) { //一年
+					this.start = moment().subtract(364, 'days').startOf('days').format('YYYY-MM-DD HH:mm:ss');
+					this.end = moment().endOf('days').format('YYYY-MM-DD HH:mm:ss');
+				} else if (index == 1) { //一个月
+					this.start = moment().subtract(29, 'days').startOf('days').format('YYYY-MM-DD HH:mm:ss');
+					this.end = moment().endOf('days').format('YYYY-MM-DD HH:mm:ss');
+				} else { //一周
+					this.start = moment().subtract(6, 'days').startOf('days').format('YYYY-MM-DD HH:mm:ss');
+					this.end = moment().endOf('days').format('YYYY-MM-DD HH:mm:ss');
+				}
+				/* 获取团队报告数据和获取收入详情数据 */
+				this.GetTeamReportData();
+			},
 			//获取个人报告
 			async GetMyReportData() {
 				//获取用户ID
@@ -261,6 +267,10 @@
 			}
 		},
 		onShow() {
+			/* 获取一年日期 */
+			this.start = moment().subtract(364, 'days').startOf('days').format('YYYY-MM-DD HH:mm:ss');
+			this.end = moment().endOf('days').format('YYYY-MM-DD HH:mm:ss');
+			this.current = 0;
 			this.GetTeamReportData();
 			this.GetMyReportData();
 		},
@@ -299,6 +309,25 @@
 		z-index: 100;
 	}
 
+	.tabs {
+		position: fixed;
+		left: 0;
+		top: 60px;
+		width: 100%;
+		z-index: 99999;
+		background-color: #fff;
+		font-size: 36rpx;
+		font-family: 'Arial';
+		color: #888888;
+	}
+
+	.tabs /deep/ .v-tabs__container-line {
+		height: 4rpx !important;
+	}
+	.tabs /deep/ .v-tabs__container-item{
+		font-family: "PingFangSC-Regular";
+		// font-size: 40rpx!important;
+	}
 
 	.container {
 		width: 100%;
@@ -479,10 +508,11 @@
 				.top {
 					display: flex;
 					justify-content: space-between;
-					.item{
-						flex:  0 0 33%;
+					.item {
+						flex: 0 0 33%;
 						box-sizing: border-box;
 					}
+
 					.item_text {
 						height: 80rpx;
 						font-size: 28rpx;
@@ -514,19 +544,21 @@
 						margin-top: 16rpx;
 						display: flex;
 						justify-content: flex-start;
-						.icon{
+
+						.icon {
 							width: 24rpx;
 							height: 24rpx;
 							background: url("../../static/image/team/yonghu.png") no-repeat center center;
 							background-size: 24rpx 24rpx;
 							margin-right: 17rpx;
 						}
+
 						&.right {
 							justify-content: flex-end;
 						}
 
 						&.center {
-							justify-content:center;
+							justify-content: center;
 						}
 					}
 				}
@@ -548,6 +580,64 @@
 					// font-weight: 700;
 					text-align: center;
 					color: #fe6067;
+				}
+			}
+			
+			.EarningDetails{
+				background-color: #fff;
+				border-radius: 16rpx;
+				box-sizing: border-box;
+				padding: 30rpx 24rpx;
+				.item{
+					display: flex;
+					align-items: flex-end;
+					margin-top: 20rpx;
+					padding-bottom: 20rpx;
+					.left{
+						flex: 0 0 260rpx;
+						padding-right: 30rpx;
+					}
+					.item_text {
+						width: 100%;
+						box-sizing: border-box;
+						height: 80rpx;
+						font-size: 28rpx;
+						font-family: "PingFangSC-Regular";
+						// font-weight: 400;
+						text-align: left;
+						color: #005652;
+						display: flex;
+						justify-content: flex-start;
+						align-items: center;
+						margin-top: 20rpx;
+					}
+					.item_value{
+						height: 32rpx;
+						font-size: 32rpx;
+						font-family: "D-Bold";
+						// font-weight: 400;
+						color: #ffaa03;
+						line-height: 32rpx;
+						margin-top: 16rpx;
+						text-align: left;
+					}
+					.viewRecord{
+						width: 100%;
+						height: 80rpx;
+						border: 1px solid transparent;
+						background-image: linear-gradient(to right, #fff, #fff), linear-gradient(90deg, #e64340, #005652);
+						background-clip: padding-box, border-box;
+						background-origin: padding-box, border-box;
+						border-radius: 42rpx;
+						box-sizing: border-box;
+						text-align: center;
+						line-height: 80rpx;
+						font-size: 30rpx;
+						font-family: "Helvetica";
+						// font-weight: 700;
+						text-align: center;
+						color: #fe6067;
+					}
 				}
 			}
 		}
