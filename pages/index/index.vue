@@ -282,6 +282,7 @@
 		},
 		onShow() {
 			if (!this.$u.utils.Permissions()) return;
+			this.$u.utils.setTabBarI18n();
 			/* 获取优惠活动列表 */
 			this.GetPromotionList();
 			/* 获取佣金大厅列表 */

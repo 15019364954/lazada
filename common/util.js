@@ -101,13 +101,39 @@ const install = (Vue, vm) => {
 	    });
 	}
 	
+	//动态设置tabbar国际化
+	const setTabBarI18n = ()=> {
+		for (let i = 0; i < 4; i++) {
+			let text = "";
+			switch (i) {
+				case 0:
+					text = vm.$t('tabbar.HomeText');
+					break;
+				case 1:
+					text = vm.$t('tabbar.OrderText');
+					break;
+				case 2:
+					text = vm.$t('tabbar.TeamText');
+					break;
+				case 3:
+					text = vm.$t('tabbar.AccountText');
+					break;
+			}
+			uni.setTabBarItem({
+				index: i,
+				text
+			});
+		}
+	}
+	
 	vm.$u.utils = {
 		Permissions,
 		handleNetwork,
 		pageToBack,
 		JsonToAscii,
 		handleAwait,
-		encodeSearchKey
+		encodeSearchKey,
+		setTabBarI18n
 	}
 	
 }

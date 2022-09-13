@@ -99,6 +99,7 @@
 		},
 		onShow() {
 			if (!this.$u.utils.Permissions()) return;
+			this.$u.utils.setTabBarI18n();
 			if(this.productList.length>1&&this.$refs.paging) {
 				this.$refs.paging.reload();
 			}

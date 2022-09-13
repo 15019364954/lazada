@@ -8,7 +8,7 @@
 		</view>
 		<view class="container">
 			<view class="form">
-				<view class="settingLanguage">Language Settings</view>
+				<view class="settingLanguage" @click="languageSetting">Language Settings</view>
 				<view class="title">Hello,User</view>
 				<view class="title_desc">Please enter your Phone and Password to login</view>
 				<!-- 账号 -->
@@ -233,6 +233,11 @@
 			}
 		},
 		methods: {
+			languageSetting() {
+				uni.navigateTo({
+					url: "/pages/languageSettings/languageSettings"
+				})
+			},
 			
 			close() {
 				this.show = false;

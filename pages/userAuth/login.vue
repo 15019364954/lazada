@@ -20,7 +20,7 @@
 		</view>
 		<view class="container">
 			<view class="form">
-				<view class="settingLanguage">Language Settings</view>
+				<view class="settingLanguage" @click="languageSetting">Language Settings</view>
 				<view class="title">Hello,User</view>
 				<view class="title_desc">Please enter your Phone and Password to login</view>
 				<u-input :class="userIDFocus" placeholderClass="placeholderClass" placeholder="Enter your Phone number"
@@ -111,6 +111,12 @@
 			}
 		},
 		methods: {
+			languageSetting() {
+				uni.navigateTo({
+					url: "/pages/languageSettings/languageSettings"
+				})
+			},
+			
 			toRegister() {
 				uni.navigateTo({
 					url: "/pages/userAuth/registerUser"

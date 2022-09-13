@@ -16,8 +16,8 @@
 				<view class="invCode">
 					<view class="title">{{$t('account.InvitationCode')}}</view>
 					<view class="code_copy">
-						<view class="code">{{MyReport&&MyReport.invitationCode}}</view>
-						<view class="copy">Copy</view>
+						<view class="code" @click="copy(MyReport&&MyReport.invitationCode||'')">{{MyReport&&MyReport.invitationCode}}</view>
+						<view class="copy" @click="copy(MyReport&&MyReport.invitationCode||'')">Copy</view>
 					</view>
 				</view>
 
@@ -25,39 +25,39 @@
 				<view class="invLink">
 					<view class="title">Share link</view>
 					<view class="link_copy">
-						<view class="link">https://go-bays.com/#/pages/l…</view>
-						<view class="copy">Copy</view>
+						<view class="link" @click="copy(shareLink)">{{shareLink}}</view>
+						<view class="copy" @click="copy(shareLink)">Copy</view>
 					</view>
 				</view>
 
 				<!-- 媒体分享 -->
 				<view class="media">
-					<view class="item">
+					<view class="item" @click="shareMessage('WhatsApp')">
 						<u-image src="../../static/image/team/What_sApp.png" width="40rpx" height="40rpx"
 							mode="scaleToFill" :lazyLoad="false" class="setting"></u-image>
 						<view class="text">What'sApp</view>
 					</view>
-					<view class="item">
+					<view class="item" @click="shareMessage('Telegram')">
 						<u-image src="../../static/image/team/telegram.png" width="40rpx" height="40rpx"
 							mode="scaleToFill" :lazyLoad="false" class="setting"></u-image>
 						<view class="text">Telegram</view>
 					</view>
-					<view class="item">
+					<view class="item" @click="shareMessage('Email')">
 						<u-image src="../../static/image/team/youxiang.png" width="40rpx" height="40rpx"
 							mode="scaleToFill" :lazyLoad="false" class="setting"></u-image>
 						<view class="text">Email</view>
 					</view>
-					<view class="item">
+					<view class="item" @click="shareMessage('Facebook')">
 						<u-image src="../../static/image/team/facebook.png" width="40rpx" height="40rpx"
 							mode="scaleToFill" :lazyLoad="false" class="setting"></u-image>
 						<view class="text">Facebook</view>
 					</view>
-					<view class="item">
+					<view class="item" @click="shareMessage('Twitter')">
 						<u-image src="../../static/image/team/twitter.png" width="40rpx" height="40rpx"
 							mode="scaleToFill" :lazyLoad="false" class="setting"></u-image>
 						<view class="text">Twitter</view>
 					</view>
-					<view class="item">
+					<view class="item" @click="shareMessage('Line')">
 						<u-image src="../../static/image/team/line.png" width="40rpx" height="40rpx" mode="scaleToFill"
 							:lazyLoad="false" class="setting"></u-image>
 						<view class="text">Line</view>
@@ -164,6 +164,8 @@
 		GetTeamReport,
 		GetMyReport
 	} from '@/common/api.js';
+	//分享链接查询网址
+	// https://asmcn.icopy.site/awesome/shareable-links/#twitter
 	export default {
 		data() {
 			return {
@@ -172,10 +174,117 @@
 				teamData: null, //团队报告数据
 				MyReport: null,
 				current: 0, //当前选中的选项卡
+				shareLink: "https://go-bays.com/#/pages/userAuth/login/#",
+				shareData: [
+					{
+						name: "facebook",
+						url: "https://www.facebook.com/sharer/sharer.php?u=https://zalando-wap.com/#/pages/userAuth/registerUser?vcode=16782347"
+					},
+					{
+						name: "twitter",
+						url: "https://twitter.com/share?url=https://zalando-wap.com/#/pages/userAuth/registerUser?vcode=16782347&text=This+is+the+content&via=account&hashtags=one,two"
+					},
+					{
+						name: "email",
+						url: "mailto:info@example.com?&subject=&cc=&bcc=&body=htzalando-wap.com/#/pages/userAuth/registerUser?vcode=16782347%0downloadA"
+					},
+					{
+						name: "telegram",
+						url: "tg://msg_url?text=This+is+the+content&url=https://zalando-wap.com/#/pages/userAuth/registerUser?vcode=16782347"
+					},
+					{
+						name: "wahtApp",
+						url: "whatsapp://send?text=This+is+the+content"
+					},
+					{
+						name: "facebook",
+						url: "https://www.facebook.com/sharer/sharer.php?u=https://zalando-wap.com/#/pages/userAuth/registerUser?vcode=16782347"
+					},
+				]
 
 			}
 		},
 		methods: {
+			shareMessage(type) {
+				if(!this.MyReport) return;
+				let invitationCode = this.MyReport.invitationCode;
+				let url = '';
+				if(type=="WhatsApp") {
+					let params = `Chance to earn 100000 IDR easily at home, you should try it too.https://zalando-wap1.com/#/pages/userAuth/registerUser/?vcode=${invitationCode}`;
+					url =(`https://api.whatsapp.com/send?text=${encodeURIComponent(params)}`);
+				}
+				if(type=="Telegram") {
+					let params = `Chance to earn 100000 IDR easily at home, you should try it too.https://zalando-wap1.com/#/pages/userAuth/registerUser/?vcode=${invitationCode}`;
+					url = `https://t.me/share/url?url=${encodeURIComponent(params)}&text=${encodeURIComponent(params)}`;
+				}
+				if(type=="Email") {
+					url = "https://www.facebook.com/sharer/sharer.php?u=https://zalando-wap1.com/#/pages/userAuth/registerUser?vcode=16782347"
+				}
+				if(type=="Facebook") {
+					let params = `https://zalando-wap1.com/#/pages/userAuth/registerUser/?vcode=${invitationCode}`;
+					url = encodeURI("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(params))
+				}
+				if(type=="Twitter") {
+					url = "https://twitter.com/share?url=http://2132131221321.com&text=This+is+the+content&hashtags=one,two"
+				}
+				if(type=="Line") {
+					debugger
+					let params = `Chance to earn $100000 easily at home, you should try it too https://zalando-wap1.com/#/pages/userAuth/registerUser/?vcode=${invitationCode}`;
+					url = "http://line.me/R/msg/text?"+encodeURIComponent(params);
+				}
+				// #ifdef H5
+				location.href = url;
+				// #endif
+				// #ifdef APP-PLUS
+					plus.runtime.openURL(url, function(res) {
+						console.log(res);  
+					});
+				//#endif
+			},
+			
+			handleCopy(type) {
+				if (type == 1) {
+					this.$refs.uToast.show({
+						message: this.$t('copy.copySuccess'),
+						type: 'success',
+						icon: true,
+						position: 'center',
+						duration: 2000,
+					})
+				} else {
+					this.$refs.uToast.show({
+						message: this.$t('copy.copyError'),
+						type: 'error',
+						icon: true,
+						position: 'center',
+						duration: 2000,
+					})
+				}
+			},
+			//复制方法调用系统api
+			copy(content) {
+				// 触发方法
+				const _that = this;
+				//#ifdef APP-PLUS
+				uni.setClipboardData({
+					data: content,
+					showToast: false,
+					success: function() {
+						_that.handleCopy(1);
+					},
+					error: (e) => {
+						_that.handleCopy(0);
+					}
+				});
+				//#endif
+				//#ifdef H5
+				_that.$copyText(content).then(e => {
+					_that.handleCopy(1);
+				}, function(e) {
+					_that.handleCopy(0);
+				})
+				//#endif
+			},
 			list() {
 				let list = [
 					this.$t('teamReport.Yearly'),
@@ -267,6 +376,7 @@
 			}
 		},
 		onShow() {
+			this.$u.utils.setTabBarI18n();
 			/* 获取一年日期 */
 			this.start = moment().subtract(364, 'days').startOf('days').format('YYYY-MM-DD HH:mm:ss');
 			this.end = moment().endOf('days').format('YYYY-MM-DD HH:mm:ss');
@@ -324,7 +434,8 @@
 	.tabs /deep/ .v-tabs__container-line {
 		height: 4rpx !important;
 	}
-	.tabs /deep/ .v-tabs__container-item{
+
+	.tabs /deep/ .v-tabs__container-item {
 		font-family: "PingFangSC-Regular";
 		// font-size: 40rpx!important;
 	}
@@ -508,6 +619,7 @@
 				.top {
 					display: flex;
 					justify-content: space-between;
+
 					.item {
 						flex: 0 0 33%;
 						box-sizing: border-box;
@@ -582,21 +694,24 @@
 					color: #fe6067;
 				}
 			}
-			
-			.EarningDetails{
+
+			.EarningDetails {
 				background-color: #fff;
 				border-radius: 16rpx;
 				box-sizing: border-box;
 				padding: 30rpx 24rpx;
-				.item{
+
+				.item {
 					display: flex;
 					align-items: flex-end;
 					margin-top: 20rpx;
 					padding-bottom: 20rpx;
-					.left{
+
+					.left {
 						flex: 0 0 260rpx;
 						padding-right: 30rpx;
 					}
+
 					.item_text {
 						width: 100%;
 						box-sizing: border-box;
@@ -611,7 +726,8 @@
 						align-items: center;
 						margin-top: 20rpx;
 					}
-					.item_value{
+
+					.item_value {
 						height: 32rpx;
 						font-size: 32rpx;
 						font-family: "D-Bold";
@@ -621,7 +737,8 @@
 						margin-top: 16rpx;
 						text-align: left;
 					}
-					.viewRecord{
+
+					.viewRecord {
 						width: 100%;
 						height: 80rpx;
 						border: 1px solid transparent;

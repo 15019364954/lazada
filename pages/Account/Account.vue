@@ -8,26 +8,49 @@
 					<u-image :src="faceUrl" width="70rpx" height="70rpx" shape="circle" mode="scaleToFill"
 						:lazyLoad="false"></u-image>
 				</view>
-				<view class="userId">{{MyReport&&MyReport.name}}</view>
+				<view class="userId">
+					<view class="user">{{MyReport&&MyReport.name}}</view>
+					<view class="userlevel" v-show="MyReport&&MyReport.level">
+						{{MyReport&&handleLevelName(MyReport.level)}}</view>
+				</view>
 			</view>
 			<view class="language_setting item">
 				<u-image src="../../static/image/my/yuyan_1.png" width="44rpx" height="44rpx" mode="scaleToFill"
-					:lazyLoad="false" class="language"></u-image>
+					:lazyLoad="false" class="language" @click="languageSetting"></u-image>
 				<u-image src="../../static/image/my/shezhi.png" width="44rpx" height="44rpx" mode="scaleToFill"
 					:lazyLoad="false" class="setting"></u-image>
 			</view>
 		</view>
 
+		<!-- 倒计时 -->
+		<view class="countdown" :style="{top: statusBarHeight+'px'}" v-if="MyReport&&MyReport.level">
+			<view class="time">
+				<view class="icon"></view>
+				<u-count-down :time="Time" format="DD:HH:mm:ss" autoStart millisecond @change="onChange">
+					<view class="time">
+						<text class="time__item">{{ timeData.days>=10?timeData.days:'0'+timeData.days }}&nbsp;天</text>
+						<text class="time__item">{{ timeData.hours>=10?timeData.hours:'0'+timeData.hours}}&nbsp;时</text>
+						<text
+							class="time__item">{{ timeData.minutes>=10?timeData.minutes:'0'+timeData.minutes }}&nbsp;分</text>
+						<text
+							class="time__item">{{ timeData.seconds>=10?timeData.seconds:'0'+timeData.seconds }}&nbsp;秒</text>
+					</view>
+				</u-count-down>
+			</view>
+		</view>
+
+		<view :style="{paddingTop: handleTop}"></view>
+
 		<!-- 用户内容 -->
-		<view class="userBalanceHistory" :style="{paddingTop: isPhone?statusBarHeight+12+'px':77+'px'}">
+		<view class="userBalanceHistory">
 			<view class="container">
 				<view class="currentBalanceTetxt item">
 					<view class="text">Current Balance</view>
 					<view class="RecordText">Records</view>
 				</view>
 				<view class="balance item">
-					<view class="balanceU" v-show="eys">USDT {{MyReport&&MyReport.balance}}</view>
-					<view class="balanceU" v-show="!eys">USDT ******</view>
+					<view class="balanceU" v-show="eys&&MyReport">USDT {{MyReport&&MyReport.balance}}</view>
+					<view class="balanceU" v-show="!eys&&MyReport">USDT ******</view>
 					<view class="eys" @click="toggleClassEys">
 						<u-image src="../../static/image/my/yanjing_xianshi.png" width="44rpx" height="44rpx"
 							mode="scaleToFill" :lazyLoad="false" v-show="eys"></u-image>
@@ -54,37 +77,35 @@
 				<view class="commission">
 					<view class="row">
 						<view class="col">
-							<view class="title left">Today's orders</view>
-							<view class="num left">3</view>
+							<view class="title left">{{$t('account.InvitationCode')}}</view>
+							<view class="num left">{{MyReport&&MyReport.invitationCode}}</view>
 						</view>
 						<view class="col">
-							<view class="title left">Today's orders</view>
-							<view class="num left">3</view>
+							<view class="title left">{{$t('account.TodayTaskEarnings')}}</view>
+							<view class="num left">${{MyReport&&MyReport.totalTodayCommission|fmtMoney}}</view>
 						</view>
 					</view>
 					<view class="row">
 						<view class="col">
-							<view class="title center">Today's orders</view>
-							<view class="num center">3</view>
+							<view class="title center">{{$t('account.TodayReferralBonus')}}</view>
+							<view class="num center">${{MyReport&&MyReport.totalReferralrewardToday|fmtMoney}}</view>
 						</view>
 						<view class="col">
-							<view class="title center">Today's orders</view>
-							<view class="num center">3</view>
+							<view class="title center">{{$t('account.TotalEarnings')}}</view>
+							<view class="num center">${{MyReport&&MyReport.totalRevenue|fmtMoney}}</view>
 						</view>
 					</view>
 					<view class="row">
 						<view class="col">
-							<view class="title right">Today's orders</view>
-							<view class="num right">3</view>
+							<view class="title right">{{$t('account.TodayTeamEarnings')}}</view>
+							<view class="num right">${{MyReport&&MyReport.totalTeamTodayCommission|fmtMoney}}</view>
 						</view>
-						<view class="col">
-							<view class="title right">Today's orders</view>
-							<view class="num right">3</view>
-						</view>
+						<!-- <view class="col">
+							<view class="title right">{{$t('account.TotalEarnings')}}</view>
+							<view class="num right">${{MyReport&&MyReport.totalRevenue|fmtMoney}}</view>
+						</view> -->
 					</view>
 				</view>
-
-
 			</view>
 		</view>
 
@@ -99,10 +120,11 @@
 				<u-icon name="arrow-right" color="32rpx" size="#D8D8D8"></u-icon>
 			</view>
 		</view>
-		
-		<view class="logOut" >
+
+		<view class="logOut">
 			<!-- register button -->
-			<wyb-button class="logOutBtn" type="hollow" :ripple="true" @click="Logout">{{$t('account.logout')}}</wyb-button>
+			<wyb-button class="logOutBtn" type="hollow" :ripple="true" @click="Logout">{{$t('account.logout')}}
+			</wyb-button>
 		</view>
 		<drag-btn></drag-btn>
 		<u-toast ref="uToast" />
@@ -111,6 +133,7 @@
 
 <script>
 	import md5 from "js-md5";
+	import moment from 'moment';
 	import {
 		ModifyFaceUrl,
 		GetTeamReport,
@@ -126,9 +149,101 @@
 				MyReport: null, //报告数据
 				faceUrl: '',
 				eys: true,
+				endDate: null,
+				timeData: {}
+
+			}
+		},
+		computed: {
+			handleTop() {
+				if (this.isPhone && this.MyReport && this.MyReport.level) {
+					return this.statusBarHeight + 12 + 58 + 'px';
+				} else if (this.isPhone && this.MyReport && !this.MyReport.level) {
+					return this.statusBarHeight + 12 + 58 + 'px'
+				} else if (!this.isPhone && this.MyReport && this.MyReport.level) {
+					return this.statusBarHeight + 12 + 58 + 'px';
+				} else if (!this.isPhone && this.MyReport && !this.MyReport.level) {
+					return this.statusBarHeight + 12 + 'px'
+				} else if (this.isPhone && !this.MyReport) {
+					return this.statusBarHeight + 12 + 'px'
+				} else {
+					return 77 + 'px'
+				}
+			},
+			Time() {
+				if (this.MyReport && this.MyReport.currentDateTime && this.endDate) {
+					let current = this.MyReport.currentDateTime;
+					let endDate = this.endDate.replace(/\//g, "-");
+					endDate = moment(endDate);
+					let timeDiff = endDate.diff(moment(current), 'seconds')
+					return timeDiff ? timeDiff * 1000 : 0;
+				}
 			}
 		},
 		methods: {
+			languageSetting() {
+				uni.navigateTo({
+					url: "/pages/languageSettings/languageSettings"
+				})
+			},
+			
+			//动态设置tabbar国际化
+			setTabBarI18n() {
+				for(let i=0; i<4; i++) {
+					let text = "";
+					switch(i) {
+						case 0: text = this.$t('tabbar.HomeText');
+						break;
+						case 1: text = this.$t('tabbar.OrderText');
+						break;
+						case 2: text = this.$t('tabbar.TeamText');
+						break;
+						case 3: text = this.$t('tabbar.AccountText');
+						break;
+					}
+					uni.setTabBarItem({
+						index: i,
+						text
+					});
+				}
+			},
+			
+			//处理等级名称显示
+			handleLevelName(leveName) {
+				let name = '';
+				switch (leveName) {
+					case "Trainee Manager":
+						name = this.$t('grade.Trainee_Manager');
+						break;
+					case "General Manager":
+						name = this.$t('grade.General_Manager');
+						break;
+					case "Senior Manager":
+						name = this.$t('grade.Senior_Manager');
+						break;
+					case "Regional Manager":
+						name = this.$t('grade.Regional_Manager');
+						break;
+					case "Regional General Manager":
+						name = this.$t('grade.Regional_General_Manager');
+						break;
+					case "Regional Vice President":
+						name = this.$t('grade.Regional_Vice_President');
+						break;
+					case "Regional President":
+						name = this.$t('grade.Regional_President');
+						break;
+					case "Co-Founder":
+						name = this.$t('grade.Co-Founder');
+						break;
+					default:
+						name = "";
+				}
+				return name;
+			},
+			onChange(e) {
+				this.timeData = e
+			},
 			/* 退出登录 */
 			async Logout() {
 				uni.$u.vuex('vuex_token', '');
@@ -139,7 +254,7 @@
 					url: '/pages/userAuth/login'
 				})
 			},
-			
+
 			toggleClassEys() {
 				this.eys = !this.eys;
 			},
@@ -290,9 +405,42 @@
 					})
 				}
 			},
+
+			//获取任务大厅列表
+			async GetDLevelRuleList() {
+				const userID = uni.getStorageSync('userInfo').userID;
+				const params = {
+					userID,
+					pageIndex: 1,
+					pageSize: 100,
+				}
+				const res = await GetPDLevelRuleList(params);
+				const networkError = this.$u.utils.handleNetwork(res);
+				if (networkError) {
+					this.$refs.uToast.show({
+						message: networkError,
+						type: 'error',
+						duration: 2000,
+					})
+					return;
+				}
+				if (res.data.resultCode == 1) {
+					let list = res.data.resultData.pdLevelRuleList;
+					let result = list && list.length && list.filter(item => item.enable && item.state);
+					let endDate = result && result.length ? result[0].endDate : null;
+					this.endDate = endDate;
+				} else {
+					this.$refs.uToast.show({
+						message: this.$t("config.resultCode" + res.data.resultCode),
+						type: 'error',
+						duration: 2000,
+					})
+				}
+			},
 		},
 		onShow() {
 			if (!this.$u.utils.Permissions()) return;
+			this.$u.utils.setTabBarI18n();
 			//设置头像判断本地是否有头像
 			let faceUrl = uni.getStorageSync('faceUrl');
 			if (faceUrl) {
@@ -301,6 +449,7 @@
 				this.faceUrl = "/static/image/my/morentouxiang.png"
 			}
 			this.GetMyReportData();
+			this.GetDLevelRuleList();
 		},
 		onLoad() {
 			//获取系统刘海高度
@@ -333,20 +482,74 @@
 		z-index: 1000;
 		padding: 0 34rpx;
 		box-sizing: border-box;
+
 		.item {
 			display: flex;
 			align-items: center;
+
 			.userId {
 				margin-left: 24rpx;
-				font-size: 36rpx;
-				font-family: "PingFangSC-Medium";
-				// font-weight: 500;
-				text-align: left;
-				color: #fe6067;
+
+				.user {
+					font-size: 36rpx;
+					font-family: "PingFangSC-Medium";
+					// font-weight: 500;
+					text-align: left;
+					color: #fe6067;
+				}
+
+				.userlevel {
+					font-size: 28rpx;
+					font-family: "PingFangSC-Regular";
+					// font-weight: 400;
+					text-align: left;
+					color: #ffaa03;
+					// line-height: 14px;
+				}
 			}
 
 			.setting {
 				margin-left: 30rpx;
+			}
+		}
+	}
+
+	.countdown {
+		width: 100%;
+		height: 117rpx;
+		// background-color: #fff;
+		position: fixed;
+		padding: 0 34rpx;
+		box-sizing: border-box;
+		z-index: 1000;
+
+		.time {
+			width: var(100vw-68rpx);
+			height: 117rpx;
+			background-color: #FE6067;
+			border-top-left-radius: 20rpx;
+			border-top-right-radius: 20rpx;
+			border-bottom-right-radius: 50%;
+			border-bottom-left-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			.icon {
+				width: 28rpx;
+				height: 28rpx;
+				background: url("../../static/image/my/countDown.png")no-repeat center center;
+				background-size: 28rpx 28rpx;
+				margin-right: 25rpx;
+			}
+
+			.time__item {
+				color: #fff;
+				font-size: 28rpx;
+				font-family: "Helvetica";
+				font-weight: 400;
+				text-align: right;
+				color: #ffffff;
 			}
 		}
 	}
@@ -441,7 +644,7 @@
 
 					.title {
 						text-align: left;
-						height: 24rpx;
+						height: 48rpx;
 						font-size: 24rpx;
 						font-family: "PingFangSC-Regular";
 						// font-weight: 400;
@@ -527,27 +730,29 @@
 			}
 		}
 	}
-	
+
 	/* 退出按钮 */
-	.logOut{
+	.logOut {
 		width: 100%;
 		padding: 0 24rpx;
 		padding-top: 48rpx;
 		padding-bottom: 48rpx;
 		box-sizing: border-box;
+
 		.logOutBtn {
 			width: 100% !important;
 			box-sizing: border-box;
+
 			/deep/.wyb-button {
 				height: 90rpx;
-				background: linear-gradient(308deg,#ff5261 10%, #ff8588 87%)!important;
-				border-radius: 46rpx!important;
+				background: linear-gradient(308deg, #ff5261 10%, #ff8588 87%) !important;
+				border-radius: 46rpx !important;
 				line-height: 86rpx;
 				text-align: center;
 				// font-weight: 700;
 				color: #fff !important;
 				box-sizing: border-box;
-				border: none!important;
+				border: none !important;
 				font-size: 34rpx;
 				font-family: "Helvetica";
 				// font-weight: 400;

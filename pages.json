@@ -133,6 +133,16 @@
             }
             
         }
+        ,{
+            "path" : "pages/languageSettings/languageSettings",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -141,6 +151,7 @@
 		"backgroundColor": "#F7F7F7"
 	},
 	"tabBar": {
+			"custom": true,
 			"color": "#999999",
 			"selectedColor": "#FF5261",
 			"borderStyle": "none",

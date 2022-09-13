@@ -14,6 +14,12 @@
     "js-md5": "^0.7.3",
     "moment": "^2.29.4",
     "nanoid": "^4.0.0",
-    "vue-clipboard2": "^0.3.3"
+    "vue-clipboard2": "^0.3.3",
+    "vue-i18n": "^9.1.9"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.9",
+    "browserslist": "^4.21.3",
+    "caniuse-lite": "^1.0.30001398"
   }
 }
