@@ -63,11 +63,11 @@
 				<!-- 按钮组 -->
 				<view class="btnGroup">
 					<!-- 提现 -->
-					<view class="btn Withdraw">{{$t('account.Withdraw')}} </view>
+					<navigator url="/pages/withdraw/withdraw" open-type="navigate" class="btn Withdraw">{{$t('account.Withdraw')}} </navigator>
 					<!-- 充值 -->
-					<view class="btn Deposit">{{$t('account.Deposit')}} </view>
+					<navigator url="/pages/recharge/recharge" open-type="navigate" class="btn Deposit">{{$t('account.Deposit')}} </navigator>
 					<!-- 转账 -->
-					<view class="btn Transfer">{{$t('account.Transfer')}}</view>
+					<navigator url="/pages/transfer/transfer" open-type="navigate" class="btn Transfer">{{$t('account.Transfer')}}</navigator>
 				</view>
 
 				<!-- 分割线 -->
