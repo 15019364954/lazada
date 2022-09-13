@@ -11,7 +11,8 @@
 				<view class="userId">
 					<view class="user">{{MyReport&&MyReport.name}}</view>
 					<view class="userlevel" v-show="MyReport&&MyReport.level">
-						{{MyReport&&handleLevelName(MyReport.level)}}</view>
+						{{MyReport&&handleLevelName(MyReport.level)}}
+					</view>
 				</view>
 			</view>
 			<view class="language_setting item">
@@ -111,14 +112,20 @@
 
 		<!-- carList -->
 		<view class="carList">
-			<view class="item" v-for="item in 10">
+			<navigator 
+				class="item" 
+				v-for="item in cardList"
+				:url="item.url" 
+				:open-type="item.type" 
+				hover-class="none"
+			>
 				<view class="left">
 					<u-image src="../../static/image/my/car1.png" width="60rpx" height="60rpx" mode="scaleToFill"
 						:lazyLoad="false"></u-image>
-					<view class="text">Achievements</view>
+					<view class="text">{{item.title}}</view>
 				</view>
 				<u-icon name="arrow-right" color="32rpx" size="#D8D8D8"></u-icon>
-			</view>
+			</navigator>
 		</view>
 
 		<view class="logOut">
@@ -150,11 +157,102 @@
 				faceUrl: '',
 				eys: true,
 				endDate: null,
-				timeData: {}
-
+				timeData: {},
 			}
 		},
 		computed: {
+			cardList() {
+				return [{ //1教程
+						title: this.$t('Tutorial'),
+						url: "/pages/ReadeView/ReadeView?type=1",
+						type: "navigate"
+					},
+					//2介绍
+					{
+						title: this.$t('home.Intro'),
+						url: "/pages/ReadeView/ReadeView?type=2",
+						type: "navigate"
+					},
+					//3团队机制
+					{
+						title: this.$t('home.TeamMechanism'),
+						url: "/pages/ReadeView/ReadeView?type=10",
+						type: "navigate"
+					},
+					//4佣金比例
+					{
+						title: this.$t('home.commisionRate'),
+						url: "/pages/ReadeView/ReadeView?type=4",
+						type: "navigate"
+					},
+					//5绑定手机号码
+					{
+						title: this.$t('account.LinkedMobileNumber'),
+						url: "/pages/BindingMobile/BindingMobile",
+						type: "navigate"
+					},
+					//6钱包地址
+					{
+						title: this.$t('account.WalletAddress'),
+						url: "/pages/walletAddress/walletAddress",
+						type: "navigate"
+					},
+					//7支付密码
+					{
+						title: this.$t('account.WithdrawalPassword'),
+						url: "/pages/WithdrawalPassword/WithdrawalPassword",
+						type: "navigate"
+					},
+					//8重置密码
+					{
+						title: this.$t('account.ResetPassword'),
+						url: "/pages/changePassword/changePassword",
+						type: 'navigate'
+					},
+					//9官方公告
+					{
+						title: this.$t('account.OfficialAnnouncement'),
+						url: "/pages/noticeCenter/noticeCenter",
+						type: 'navigate'
+					},
+					//10团队机制
+					{
+						title: this.$t('account.TeamMechanism'),
+						url: "/pages/ReadeView/ReadeView?type=10",
+						type: 'navigate'
+					},
+					{
+						//11用户协议
+						title: this.$t('account.UserAgreement'),
+						url: "/pages/ReadeView/ReadeView?type=5",
+						type: 'navigate'
+					},
+					//12FAQ
+					{
+						title: this.$t('account.FAQ'),
+						url: "/pages/ReadeView/ReadeView?type=9",
+						type: 'navigate'
+					},
+					//13关于我们
+					{
+						title: this.$t('account.aboutUs'),
+						url: "/pages/ReadeView/ReadeView?type=8",
+						type: 'navigate'
+					},
+					//14合作伙伴
+					{
+						title: this.$t('account.PlatformPartners'),
+						url: "/pages/ReadeView/ReadeView?type=11",
+						type: 'navigate'
+					},
+					//15系统信息
+					{
+						title: this.$t('account.About'),
+						url: "/pages/about/about",
+						type: 'navigate'
+					},
+				]
+			},
 			handleTop() {
 				if (this.isPhone && this.MyReport && this.MyReport.level) {
 					return this.statusBarHeight + 12 + 58 + 'px';
@@ -186,20 +284,24 @@
 					url: "/pages/languageSettings/languageSettings"
 				})
 			},
-			
+
 			//动态设置tabbar国际化
 			setTabBarI18n() {
-				for(let i=0; i<4; i++) {
+				for (let i = 0; i < 4; i++) {
 					let text = "";
-					switch(i) {
-						case 0: text = this.$t('tabbar.HomeText');
-						break;
-						case 1: text = this.$t('tabbar.OrderText');
-						break;
-						case 2: text = this.$t('tabbar.TeamText');
-						break;
-						case 3: text = this.$t('tabbar.AccountText');
-						break;
+					switch (i) {
+						case 0:
+							text = this.$t('tabbar.HomeText');
+							break;
+						case 1:
+							text = this.$t('tabbar.OrderText');
+							break;
+						case 2:
+							text = this.$t('tabbar.TeamText');
+							break;
+						case 3:
+							text = this.$t('tabbar.AccountText');
+							break;
 					}
 					uni.setTabBarItem({
 						index: i,
@@ -207,7 +309,7 @@
 					});
 				}
 			},
-			
+
 			//处理等级名称显示
 			handleLevelName(leveName) {
 				let name = '';

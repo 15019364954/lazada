@@ -143,6 +143,16 @@
             }
             
         }
+        ,{
+            "path" : "pages/ReadeView/ReadeView",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
