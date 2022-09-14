@@ -782,9 +782,9 @@ export default {
 	 //确认
 	 "withdrawalPassword.Confirm": "पुष्टि करें",
 	 //获取短信验证码
-	 "withdrawalPassword.startText": "सत्यापन कोड प्राप्त करेंें",
+	 "withdrawalPassword.startText": "OTP",
 	 //刷新
-	 "withdrawalPassword.Refresh": "ताज़ा करना",
+	 "withdrawalPassword.Refresh": "OTP",
 	 
 	 
 	 //请绑定您的手机号码
@@ -828,9 +828,9 @@ export default {
 	 //确认
 	 "changePassword.ConfirmBtnText": "पुष्टि करें" ,
 	 //获取短信验证码
-	 "changePassword.startText": "सत्यापन कोड प्राप्त करेंें",
+	 "changePassword.startText": "OTP",
 	 //刷新
-	 "changePassword.Refresh": "ताज़ा करना",
+	 "changePassword.Refresh": "OTP",
 	 //请绑定您的电话号码
 	 "changePassword.placeBindMobile": "कृपया अपना फोन नंबर बांधें",
 	 //正在获取验证码

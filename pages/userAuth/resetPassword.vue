@@ -22,9 +22,15 @@
 
 				<u-input border="none" clearable type="number" v-model="form.authCode" :class="authCodeFocusClass"
 					placeholderClass="placeholderClass" @focus="InputFocus('authCode')" @blur="InputBlur()" placeholder="Enter your verification code">
-					<view slot="suffix">
-						<view :class="otpStyle" @tap="getCode">{{tips}}</view>
-					</view>
+						<view slot="suffix" >
+							<u-button 
+								@tap="getCode" 
+								type="success" 
+								class="getCode"
+							>
+								{{tips}}
+							</u-button>
+						</view>
 				</u-input>
 
 				<!-- 输入密码 -->
@@ -57,8 +63,8 @@
 					</u-input>
 				</view>
 				<!-- Login button -->
-				<wyb-button :class="loginBtnEnable?'loginBtn':'disabledLogin'" type="hollow" :ripple="true"
-					:disabled="loginBtnEnable?false:true" @click="confirm">Save</wyb-button>
+				<wyb-button class="loginBtn" type="hollow" :ripple="true"
+					@click="confirm">Save</wyb-button>
 				<!-- logo -->
 				<view class="logo"></view>
 
@@ -142,19 +148,6 @@
 					return true;
 				}
 			},
-			otpStyle() {
-				const {mobile} = this.form;
-				let reg = /\d/;
-				if(mobile&&!reg.test(this.tips)) {
-					return 'getCode active'
-				}
-				if(mobile&&reg.test(this.tips)){
-					return 'getCode'
-				}
-				if(mobile==''){
-					return 'getCode';
-				}
-			}
 		},
 		methods: {
 
@@ -232,12 +225,6 @@
 					this.cpwdFocusClascs = 'input cpwdFocus'
 				} else {
 					this.authCodeFocusClass = "input authCodeFocus"
-					this.$refs.uToast.show({
-						message: "Please click OTP to get SMS verification code",
-						type: '',
-						position: "top",
-						duration: 2000,
-					})
 				}
 			},
 
@@ -559,18 +546,12 @@
 					padding-right: 20rpx !important;
 					border: 1px solid transparent;
 					flex: auto;
-					.getCode{
-						height: 38rpx;
-						font-size: 32rpx;
-						font-family: "Helvetica";
-						// font-weight: 400;
-						color: #cccccc;
-						line-height: 38rpx;
-						&.active{
-							font-family: "PingFangSC-Medium";
-							// font-weight: 500;
-							color: #ff5261;
-						}
+					.getCode {
+						width: 180rpx;
+						height: 70rpx;
+						background: linear-gradient(308deg,#ff5261 10%, #ff8588 87%);
+						border-radius: 46rpx;
+						border: none;
 					}
 					.areaCodeBox {
 						display: flex;
@@ -642,27 +623,6 @@
 							background-size: 32rpx 24rpx;
 							border: none;
 						}
-					}
-				}
-	
-				.disabledLogin {
-					width: 614rpx !important;
-					margin-top: 80rpx;
-					margin-bottom: 40rpx;
-	
-					/deep/.wyb-button {
-						box-sizing: border-box;
-						height: 90rpx;
-						line-height: 86rpx;
-						text-align: center;
-						border-radius: 46rpx !important;
-						background-color: #CCCCCC !important;
-						font-size: 32rpx;
-						font-family: "PingFangSC-Medium";
-						// font-weight: 500;
-						color: #ffffff !important;
-						border: none !important;
-						box-sizing: border-box;
 					}
 				}
 	

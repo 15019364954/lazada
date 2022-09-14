@@ -6,7 +6,7 @@
 			</navigator>
 			Register
 		</view>
-		<view class="container">
+		<view class="container" :style="{paddingTop: isPhone?statusBarHeight+12+'px':50+12+'px'}">
 			<view class="form">
 				<view class="settingLanguage" @click="languageSetting">Language Settings</view>
 				<view class="title">Hello,User</view>
@@ -80,8 +80,14 @@
 				<u-input :placeholder="$t('registerUser.mobileCode')" border="none" clearable type="number"
 					v-model="form.authCode" :class="authCodeFocusClass" placeholderClass="placeholderClass"
 					@focus="InputFocus('authCode')" @blur="InputBlur()">
-					<view slot="suffix">
-						<view :class="otpStyle" @tap="getCode">{{tips}}</view>
+					<view slot="suffix" >
+						<u-button 
+							@tap="getCode" 
+							type="success" 
+							class="getCode"
+						>
+							{{tips}}
+						</u-button>
 					</view>
 				</u-input>
 
@@ -93,8 +99,8 @@
 					<view class="protocol" @click="handleProtocol">《 {{$t('registerUser.Agreements')}} 》</view>
 				</view>
 				<!-- Login button -->
-				<wyb-button :class="loginBtnEnable?'loginBtn':'disabledLogin'" type="hollow" :ripple="true"
-					:disabled="loginBtnEnable?false:true" @click="submit">Register</wyb-button>
+				<wyb-button class="loginBtn" type="hollow" :ripple="true"
+					@click="submit">Register</wyb-button>
 				<!-- logo -->
 				<view class="logo"></view>
 
@@ -356,12 +362,6 @@
 					this.mobileFocusClass = 'input mobileFocus'
 				} else if (tag == "authCode") {
 					this.authCodeFocusClass = 'input authCodeFocus'
-					this.$refs.uToast.show({
-						message: "Please click OTP to get SMS verification code",
-						type: '',
-						position: "top",
-						duration: 2000,
-					})
 				} else {
 					this.inCodeFocusClass = 'input inCodeFocus'
 				}
@@ -643,25 +643,32 @@
 				height: 64rpx;
 				box-sizing: border-box;
 			}
+		page {
+			height: 100%;
+			background-color: #F7F7F7;
+		}
+		
 		.header {
+			text-align: center;
 			width: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			font-size: 32rpx;
+			position: fixed;
+			top: 0;
+			left: 0;
 			font-family: "PingFangSC-Medium";
-			// font-weight: 500;
-			text-align: right;
-			color: #ff5261;
+			background-color: #fff;
+			font-size: 32rpx;
 			box-sizing: border-box;
-
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #FE6067;
+			letter-spacing: 1rpx;
+			z-index: 1000;
+			border-bottom: 1px solid #ddd;
+		
 			.back {
-				width: 100rpx;
-				height: 54rpx;
-				display: flex;
-				justify-content: flex-start;
 				position: absolute;
-				left: 24rpx;
+				left: 30rpx;
 			}
 		}
 
@@ -700,7 +707,7 @@
 					text-align: center;
 					color: #333333;
 					line-height: 80rpx;
-					margin-top: 80rpx;
+					margin-top: 20rpx;
 				}
 
 				.title_desc {
@@ -747,18 +754,12 @@
 					padding-right: 20rpx !important;
 					border: 1px solid transparent;
 					flex: auto;
-					.getCode{
-						height: 38rpx;
-						font-size: 32rpx;
-						font-family: "Helvetica";
-						// font-weight: 400;
-						color: #cccccc;
-						line-height: 38rpx;
-						&.active{
-							font-family: "PingFangSC-Medium";
-							// font-weight: 500;
-							color: #ff5261;
-						}
+					.getCode {
+						width: 180rpx;
+						height: 70rpx;
+						background: linear-gradient(308deg,#ff5261 10%, #ff8588 87%);
+						border-radius: 46rpx;
+						border: none;
 					}
 					.areaCodeBox {
 						display: flex;
@@ -830,27 +831,6 @@
 							background-size: 32rpx 24rpx;
 							border: none;
 						}
-					}
-				}
-
-				.disabledLogin {
-					width: 614rpx !important;
-					margin-top: 80rpx;
-					margin-bottom: 40rpx;
-
-					/deep/.wyb-button {
-						box-sizing: border-box;
-						height: 90rpx;
-						line-height: 86rpx;
-						text-align: center;
-						border-radius: 46rpx !important;
-						background-color: #CCCCCC !important;
-						font-size: 32rpx;
-						font-family: "PingFangSC-Medium";
-						// font-weight: 500;
-						color: #ffffff !important;
-						border: none !important;
-						box-sizing: border-box;
 					}
 				}
 

@@ -24,13 +24,7 @@
 				<view class="title">Hello,User</view>
 				<view class="title_desc">Please enter your Phone and Password to login</view>
 				<u-input :class="userIDFocus" placeholderClass="placeholderClass" placeholder="Enter your Phone number"
-					@focus="InputFocus('userID')" @blur="InputBlur()" :clearable="true" v-model="form.userId">
-					<!-- <view slot="prefix">
-						<view class="areaCodeBox">
-							<u-text text="+86" class="code"></u-text>
-							<u-icon name="arrow-down-fill" size="20rpx" color="#005652"></u-icon>
-						</view>
-					</view> -->
+					@focus="InputFocus('userID')" @blur="InputBlur()" :clearable="true" v-model="form.userId" border="none">
 				</u-input>
 				<u-input :class="pwdFocus" placeholderClass="placeholderClass" placeholder="Enter your login password"
 					@focus="InputFocus('pwd')" @blur="InputBlur()" v-if="plaintext" border="none" :clearable="true"
@@ -56,8 +50,8 @@
 					<view class="forget" @click="toForget">Forget password</view>
 				</view>
 				<!-- Login button -->
-				<wyb-button :class="loginBtnEnable?'loginBtn':'disabledLogin'" type="hollow" :ripple="true"
-					:disabled="loginBtnEnable?false:true" @click="login">Login</wyb-button>
+				<wyb-button class="loginBtn" type="hollow" :ripple="true"
+				 @click="login">Login</wyb-button>
 				<!-- register button -->
 				<wyb-button class="registerBtn" type="hollow" :ripple="true" @click="toRegister">Register</wyb-button>
 				<!-- logo -->
@@ -101,14 +95,6 @@
 			savePwdClass() {
 				return this.remember ? "save_icon_active" : "save_icon"
 			},
-			// 是否启用登录按钮
-			loginBtnEnable() {
-				const {
-					userId,
-					password
-				} = this.form;
-				return userId && password ? true : false;
-			}
 		},
 		methods: {
 			languageSetting() {
@@ -436,9 +422,7 @@
 					padding-right: 20rpx !important;
 					border: 1px solid transparent;
 					flex: auto;
-
-					&.userIDFocus,
-					&.pwdFocus {
+					&.userIDFocus, &.pwdFocus {
 						border: 1px solid #FF5261;
 					}
 
@@ -513,26 +497,6 @@
 						text-align: center;
 						color: #999999;
 						line-height: 34rpx;
-					}
-				}
-
-				.disabledLogin {
-					width: 614rpx !important;
-					margin-top: 80rpx;
-
-					/deep/.wyb-button {
-						box-sizing: border-box;
-						height: 90rpx;
-						line-height: 86rpx;
-						text-align: center;
-						border-radius: 46rpx !important;
-						background-color: #CCCCCC !important;
-						font-size: 32rpx;
-						font-family: "PingFangSC-Medium";
-						// font-weight: 500;
-						color: #ffffff !important;
-						border: none !important;
-						box-sizing: border-box;
 					}
 				}
 

@@ -784,9 +784,9 @@ export default {
 	 //确认
 	 "withdrawalPassword.Confirm": "Confirm",
 	 //获取短信验证码
-	 "withdrawalPassword.startText": "Get SMS code",
+	 "withdrawalPassword.startText": "OTP",
 	 //刷新
-	 "withdrawalPassword.Refresh": "Refresh",
+	 "withdrawalPassword.Refresh": "OTP",
 	 
 	 
 	 //请绑定您的手机号码
@@ -830,9 +830,9 @@ export default {
 	 //确认
 	 "changePassword.ConfirmBtnText": "Confirm" ,
 	 //获取短信验证码
-	 "changePassword.startText": "Get SMS code",
+	 "changePassword.startText": "OTP",
 	 //刷新
-	 "changePassword.Refresh": "Refresh",
+	 "changePassword.Refresh": "OTP",
 	 //请绑定您的电话号码
 	 "changePassword.placeBindMobile": "Please bind your mobile number",
 	 //正在获取验证码

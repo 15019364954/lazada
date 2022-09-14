@@ -783,9 +783,9 @@ export default {
 	 //确认
 	 "withdrawalPassword.Confirm": "Bestätigen",
 	 //验证码
-	 "withdrawalPassword.startText": "verifizieren",
+	 "withdrawalPassword.startText": "OTP",
 	 //刷新
-	 "withdrawalPassword.Refresh": "Aktualisierung",
+	 "withdrawalPassword.Refresh": "OTP",
 	 
 	 
 	 //请绑定您的手机号码
@@ -829,9 +829,9 @@ export default {
 	 //确认
 	 "changePassword.ConfirmBtnText": "Bestätigen" ,
 	 //验证码
-	 "changePassword.startText": "verifizieren",
+	 "changePassword.startText": "OTP",
 	 //刷新
-	 "changePassword.Refresh": "Aktualisierung",
+	 "changePassword.Refresh": "OTP",
 	 //请绑定您的电话号码
 	 "changePassword.placeBindMobile": "Bitte binden Sie Ihre Telefonnummer",
 	 //正在获取验证码
