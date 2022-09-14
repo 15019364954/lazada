@@ -703,9 +703,9 @@ export default {
 	//确认
 	"bindMobile.ConfirmBtnText": "Confirm",
 	//获取短信验证码
-	"bindMobile.startText": "Get SMS code",
+	"bindMobile.startText": "OTP",
 	//刷新
-	"bindMobile.Refresh": "Refresh",
+	"bindMobile.Refresh": "OTP",
 	//手机号码不能为空
 	"bindMobile.mobileIsEmpty": "Mobile number cannot be empty!",
 	//电话号码只能有 5 到 20 位数字！
@@ -751,9 +751,9 @@ export default {
 	
 	
 	//获取短信验证码
-	"bindWallet.startText": "Get SMS code",
+	"bindWallet.startText": "OTP",
 	//刷新
-	"bindWallet.Refresh": "Refresh",
+	"bindWallet.Refresh": "OTP",
 	//正在获取验证码
 	"bindWallet.sending": "Getting verification code",
 	//验证码已发送

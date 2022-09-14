@@ -702,9 +702,9 @@ export default {
 	//确认
 	"bindMobile.ConfirmBtnText": "पुष्टि करें",
 	//获取短信验证码
-	"bindMobile.startText": "सत्यापन कोड प्राप्त करेंें",
+	"bindMobile.startText": "OTP",
 	//刷新
-	"bindMobile.Refresh": "ताज़ा करना",
+	"bindMobile.Refresh": "OTP",
 	//手机号码不能为空
 	"bindMobile.mobileIsEmpty": "फ़ोन नंबर खाली नहीं हो सकता",
 	//电话号码只能有 5 到 20 位数字！

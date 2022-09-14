@@ -703,9 +703,9 @@ export default {
 	//确认
 	"bindMobile.ConfirmBtnText": "Bestätigen",
 	//验证码
-	"bindMobile.startText": "verifizieren",
+	"bindMobile.startText": "OTP",
 	//刷新
-	"bindMobile.Refresh": "Aktualisierung",
+	"bindMobile.Refresh": "OTP",
 	//手机号码不能为空
 	"bindMobile.mobileIsEmpty": "Die Telefonnummer darf nicht leer sein",
 	//电话号码只能有 5 到 20 位数字！
@@ -750,9 +750,9 @@ export default {
 	"bindWallet.bottomTips4": "Öffnen Sie Ihr Huobi/Binance >> Assets/Wallet >> Deposit >> Crypto USDT >> Tron 20 Network",
 	
 	//验证码
-	"bindWallet.startText": "verifizieren",
+	"bindWallet.startText": "OTP",
 	//刷新
-	"bindWallet.Refresh": "Aktualisierung",
+	"bindWallet.Refresh": "OTP",
 	//正在获取验证码
 	"bindWallet.sending": "Bestätigungscode erhalten",
 	//验证码已发送
