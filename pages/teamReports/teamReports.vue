@@ -520,7 +520,8 @@
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
-
+					width: 100%;
+					box-sizing: border-box;
 					.link {
 						height: 64rpx;
 						font-size: 36rpx;
@@ -536,6 +537,7 @@
 						-webkit-line-clamp: 1;
 						-webkit-box-orient: vertical !important;
 						margin-right: 20rpx;
+						flex: 1;
 					}
 
 					.copy {

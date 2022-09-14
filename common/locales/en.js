@@ -933,9 +933,9 @@ export default {
 	//确认
 	"Nickname.Confirm": "Confirm",
 	//获取短信验证码
-	"Nickname.startText": "Get SMS code",
+	"Nickname.startText": "OTP",
 	//刷新
-	"Nickname.Refresh": "Refresh",
+	"Nickname.Refresh": "OTP",
 	//请先绑定您的手机号码
 	"Nickname.firstBindMobile": "Please bind your mobile number first",
 	//正在获取验证码

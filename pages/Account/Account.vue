@@ -19,7 +19,7 @@
 				<u-image src="../../static/image/my/yuyan_1.png" width="44rpx" height="44rpx" mode="scaleToFill"
 					:lazyLoad="false" class="language" @click="languageSetting"></u-image>
 				<u-image src="../../static/image/my/shezhi.png" width="44rpx" height="44rpx" mode="scaleToFill"
-					:lazyLoad="false" class="setting"></u-image>
+					:lazyLoad="false" class="setting" @click="setting"></u-image>
 			</view>
 		</view>
 
@@ -161,6 +161,13 @@
 			}
 		},
 		computed: {
+			/* 跳转到个人信息 */
+			setting() {
+				uni.navigateTo({
+					url:"/pages/personalInformation/personalInformation"
+				})
+			},
+			
 			cardList() {
 				return [{ //1教程
 						title: this.$t('home.Tutorial'),

@@ -199,6 +199,17 @@
 
 			//提现前处理
 			handleDeposit() {
+				//判断有没有绑定钱包如果没有绑定钱包就跳转到绑定钱包界面
+				if(this.MyReport==null) {
+					this.GetMyReportData();
+					return;
+				}
+				if(this.MyReport&&!this.MyReport.wallet) {
+					uni.navigateTo({
+						url:"/pages/walletAddress/walletAddress"
+					})
+					return;
+				}
 				//1.输入金额格式校验
 				let ruleMessage = this.rule();
 				if (ruleMessage) {

@@ -95,7 +95,7 @@
 <style lang="scss" scoped>
 	page{
 		height: 100%;
-		background-color: #F8F7FC;
+		background-color: #f7f7f7;
 	}
 	.header{
 		width: 100%;
@@ -127,14 +127,12 @@
 		width: 100%;
 		box-sizing: border-box;
 		font-family: "PingFangSC-Medium";
+		color: #005652;
 		.container{
 			width: 100%;
 			box-sizing: border-box;
 			line-height: 30px;
 		}
-	}
-	page{
-		background-color: #F8F7FC;
 	}
 	.content /deep/ img{
 		width: auto!important;

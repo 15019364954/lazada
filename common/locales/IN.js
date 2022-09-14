@@ -932,9 +932,9 @@ export default {
 	//确认
 	"Nickname.Confirm": "पुष्टि करें",
 	//获取短信验证码
-	"Nickname.startText": "सत्यापन कोड प्राप्त करेंें",
+	"Nickname.startText": "OTP",
 	//刷新
-	"Nickname.Refresh": "ताज़ा करना",
+	"Nickname.Refresh": "OTP",
 	//请先绑定您的手机号码
 	"Nickname.firstBindMobile": "कृपया पहले अपना मोबाइल नंबर बाइंड करें",
 	//正在获取验证码
