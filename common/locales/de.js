@@ -429,6 +429,8 @@ export default {
 	"account.UserAgreement": "Nutzungsbedingungen",
 	//常见问题
 	"account.FAQ": "Häufiges Problem",
+	//关于我们
+	"account.aboutUs": "über uns",
 	//系统消息
 	"account.About": "Systemnachricht",
 	//合作品牌

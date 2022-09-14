@@ -28,12 +28,12 @@
 				</view>
 
 				<!-- 订单编号 -->
-				<view class="orderNo">
+				<view class="orderNo u-line-1">
 					{{$t('orderRecord.Ordernumber')}}: {{item&&item.sortID}}
 				</view>
 
 				<!-- 日期 -->
-				<view class="date">
+				<view class="date u-line-1">
 					{{$t('orderRecord.Ordertime')}}: {{item&&item.createDate}}
 				</view>
 
@@ -187,7 +187,7 @@
 		.state {
 			background-color: rgb(13, 194, 83);
 			width: 180rpx;
-			height: 46rpx;
+			min-height: 46rpx;
 			border-top-right-radius: 16rpx;
 			border-bottom-left-radius: 16rpx;
 			position: absolute;
@@ -200,6 +200,7 @@
 			font-family: "PingFangSC-Regular";
 			// font-weight: 400;
 			color: #ffffff;
+			text-align: center;
 			
 			&.Pending{
 				// background-color: #f9ae3d;
