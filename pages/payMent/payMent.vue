@@ -26,6 +26,9 @@
 					<view @click="copy(form.payAccount)">
 						<u-input v-model="form.payAccount" border="none" inputAlign="left" type="text" :disabled="true"
 							class="input">
+							<template slot="suffix">
+								<u-icon name="../../static/image/payMent/copyIcon.png" size="40rpx" color="#FE6067" @click="copy(form.payAccount)" class="back"></u-icon>
+							</template>
 						</u-input>
 					</view>
 					<!-- 所属区块 -->
@@ -47,15 +50,15 @@
 			<!-- usdt -->
 			<view class="usdt">
 				<view class="left">
-					<u-icon name="/static/image/withdraw/usdt.png" width="86rpx" height="86rpx"></u-icon>
+					<u-icon name="/static/image/payMent/usdt.png" width="86rpx" height="86rpx"></u-icon>
 					<view class="TRC20">
 						USDT-TRC-20
 					</view>
 				</view>
 				<view class="rightTag">
-					<u-icon name="/static/image/withdraw/one.png" width="54rpx" height="54rpx" class="one"></u-icon>
-					<u-icon name="/static/image/withdraw/two.png" width="54rpx" height="54rpx" class="two"></u-icon>
-					<u-icon name="/static/image/withdraw/three.png" width="54rpx" height="54rpx" class="three"></u-icon>
+					<u-icon name="/static/image/payMent/one.png" width="54rpx" height="54rpx" class="one"></u-icon>
+					<u-icon name="/static/image/payMent/two.png" width="54rpx" height="54rpx" class="two"></u-icon>
+					<u-icon name="/static/image/payMent/three.png" width="54rpx" height="54rpx" class="three"></u-icon>
 				</view>
 			</view>
 
@@ -71,7 +74,10 @@
 
 			<!-- 按钮组 -->
 			<view class="btnGroup">
-				<u-button class="confirm itemBtn" :text="$t('payMent.Confirm')" @click="submit"></u-button>
+				<!-- Login button -->
+				<wyb-button class="confirm itemBtn" type="hollow" :ripple="true" @click="submit">
+					{{$t('payMent.Confirm')}}
+				</wyb-button>
 			</view>
 			</view>
 		</view>
@@ -321,7 +327,6 @@
 				});
 				//发送请求
 				const res = await UpdateUserPay(params);
-				this.isSubmit = false;
 				uni.hideLoading();
 				const networkError = this.$u.utils.handleNetwork(res);
 				if (networkError) {
@@ -329,6 +334,9 @@
 						message: networkError,
 						type: 'error',
 						duration: 2000,
+						complete: () => {
+							this.isSubmit = false;
+						}
 					})
 					return;
 				}
@@ -339,6 +347,7 @@
 						type: 'success',
 						duration: 2000,
 						complete: () => {
+							this.isSubmit = false;
 							uni.switchTab({
 								url: '/pages/my/my'
 							})
@@ -349,6 +358,9 @@
 						message: this.$t("config.resultCode" + res.data.resultCode),
 						type: 'error',
 						duration: 2000,
+						complete: () => {
+							this.isSubmit = false;
+						}
 					})
 				}
 			}
@@ -388,7 +400,6 @@
 		left: 0;
 		font-family: "PingFangSC-Medium";
 		background-color: #fff;
-		font-size: 20px;
 		height: 60px;
 		box-sizing: border-box;
 		display: flex;
@@ -501,9 +512,9 @@
 			border-radius: 24rpx;
 			justify-content: space-between;
 			align-items: center;
-			box-shadow: rgba(0, 0, 0, 0.03) 0px 2px 5px 4px;
+			// box-shadow: rgba(0, 0, 0, 0.03) 0px 2px 5px 4px;
 			background-color: rgba(255, 255, 255, 1.000000);
-
+			box-shadow: #ccc 0px 2px 7px 1px;
 			.left {
 				display: flex;
 				align-items: center;
@@ -569,22 +580,23 @@
 			display: flex;
 			justify-content: center;
 			margin: 84rpx 0 84rpx 0;
-
-			.confirm {
-				width: 578rpx;
-				height: 80rpx;
-				line-height: 80rpx;
+			.itemBtn {
+				width: 100% !important;
+				// margin-bottom: 80rpx;
+			}
+			.itemBtn /deep/.wyb-button {
+				box-sizing: border-box;
+				height: 90rpx;
+				line-height: 86rpx;
 				text-align: center;
-				font-family: 'Helvetica';
-				// font-weight: bold;
-				color: #FFFFFF;
-				background-color: #5162c1;
-				letter-spacing: 1rpx;
-				border-radius: 24rpx;
-
-				&/deep/ .u-button__text {
-					font-size: 40rpx !important;
-				}
+				border-radius: 46rpx !important;
+				background: linear-gradient(308deg, #ff5261 10%, #ff8588 87%) !important;
+				font-size: 32rpx;
+				font-family: "PingFangSC-Medium";
+				// font-weight: 500;
+				color: #ffffff !important;
+				border: none !important;
+				box-sizing: border-box;
 			}
 		}
 	}

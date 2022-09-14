@@ -8,7 +8,7 @@
 			{{$t('withdraw.title')}}
 			<navigator url="/pages/withdrawalsRecords/withdrawalsRecords" open-type="navigate" class="rightIcon"
 				hover-class="none">
-				<u-icon name="order" color="#8facb1" size="60rpx"></u-icon>
+				<u-icon name="order" color="#FE6067" size="60rpx"></u-icon>
 			</navigator>
 		</view>
 

@@ -120,7 +120,7 @@
 				hover-class="none"
 			>
 				<view class="left">
-					<u-image src="../../static/image/my/car1.png" width="60rpx" height="60rpx" mode="scaleToFill"
+					<u-image :src="item.icon" width="60rpx" height="60rpx" mode="scaleToFill"
 						:lazyLoad="false"></u-image>
 					<view class="text">{{item.title}}</view>
 				</view>
@@ -163,92 +163,100 @@
 		computed: {
 			cardList() {
 				return [{ //1教程
-						title: this.$t('Tutorial'),
+						title: this.$t('home.Tutorial'),
 						url: "/pages/ReadeView/ReadeView?type=1",
-						type: "navigate"
+						type: "navigate",
+						icon: require("../../static/image/carlist/Tutorial.png"),
 					},
 					//2介绍
 					{
 						title: this.$t('home.Intro'),
 						url: "/pages/ReadeView/ReadeView?type=2",
-						type: "navigate"
-					},
-					//3团队机制
-					{
-						title: this.$t('home.TeamMechanism'),
-						url: "/pages/ReadeView/ReadeView?type=10",
-						type: "navigate"
+						type: "navigate",
+						icon: require("../../static/image/carlist/Intro.png"),
 					},
 					//4佣金比例
 					{
 						title: this.$t('home.commisionRate'),
 						url: "/pages/ReadeView/ReadeView?type=4",
+						icon: require("../../static/image/carlist/commisionRate.png"),
 						type: "navigate"
 					},
 					//5绑定手机号码
 					{
 						title: this.$t('account.LinkedMobileNumber'),
 						url: "/pages/BindingMobile/BindingMobile",
+						icon: require("../../static/image/carlist/LinkedMobileNumber.png"),
 						type: "navigate"
 					},
 					//6钱包地址
 					{
 						title: this.$t('account.WalletAddress'),
 						url: "/pages/walletAddress/walletAddress",
+						icon: require("../../static/image/carlist/WalletAddress.png"),
 						type: "navigate"
 					},
 					//7支付密码
 					{
 						title: this.$t('account.WithdrawalPassword'),
 						url: "/pages/WithdrawalPassword/WithdrawalPassword",
+						icon: require("../../static/image/carlist/WithdrawalPassword.png"),
 						type: "navigate"
 					},
 					//8重置密码
 					{
 						title: this.$t('account.ResetPassword'),
 						url: "/pages/changePassword/changePassword",
+						icon: require("../../static/image/carlist/ResetPassword.png"),
 						type: 'navigate'
 					},
 					//9官方公告
 					{
 						title: this.$t('account.OfficialAnnouncement'),
 						url: "/pages/noticeCenter/noticeCenter",
+						icon: require("../../static/image/carlist/OfficialAnnouncement.png"),
 						type: 'navigate'
 					},
 					//10团队机制
 					{
 						title: this.$t('account.TeamMechanism'),
 						url: "/pages/ReadeView/ReadeView?type=10",
+						icon: require("../../static/image/carlist/TeamMechanism.png"),
 						type: 'navigate'
 					},
 					{
 						//11用户协议
 						title: this.$t('account.UserAgreement'),
 						url: "/pages/ReadeView/ReadeView?type=5",
+						icon: require("../../static/image/carlist/UserAgreement.png"),
 						type: 'navigate'
 					},
 					//12FAQ
 					{
 						title: this.$t('account.FAQ'),
 						url: "/pages/ReadeView/ReadeView?type=9",
+						icon: require("../../static/image/carlist/FAQ.png"),
 						type: 'navigate'
 					},
 					//13关于我们
 					{
 						title: this.$t('account.aboutUs'),
 						url: "/pages/ReadeView/ReadeView?type=8",
+						icon: require("../../static/image/carlist/aboutUs.png"),
 						type: 'navigate'
 					},
 					//14合作伙伴
 					{
 						title: this.$t('account.PlatformPartners'),
 						url: "/pages/ReadeView/ReadeView?type=11",
+						icon: require("../../static/image/carlist/PlatformPartners.png"),
 						type: 'navigate'
 					},
 					//15系统信息
 					{
 						title: this.$t('account.About'),
 						url: "/pages/about/about",
+						icon: require("../../static/image/carlist/About.png"),
 						type: 'navigate'
 					},
 				]

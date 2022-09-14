@@ -446,7 +446,7 @@ export default {
 	
 	/* ------------------------------------------提现界面-------------------------------------- */
 	//提现
-	"withdraw.title":"WITHDRAWAL", 
+	"withdraw.title":"Withdrawal", 
 	//输入提款金额
 	"withdraw.enterwithdrawamount": "Enter withdrawal amount", 
 	 //输入的金额不正确
